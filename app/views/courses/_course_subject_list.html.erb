@@ -1,0 +1,33 @@
+<div class="jumbotron">
+  <% if course.subjects.present? %>
+    <h3>Subject List</h3>
+    <table>
+      <tbody>
+        <% course.course_subjects.each do |course_subject| %>
+          <tr id="course_subject_<%= course_subject.id%>">
+            <td>
+              <h5>
+                <%= course_subject.subject.try(:name) %>
+              </h5>
+            </td>
+            <td>
+              <i class="fa fa-times remove-subject" data-list-id="<%= course_subject.id %>"></i>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+  <h3 class="text-center">Include Subject in this course.</h3>
+  <% end %>
+</div>
+<script type="text/javascript">
+  $(".remove-subject").on('click', function(){
+    var courseSubjectId = $(this).data("list-id");
+    $.ajax({
+      url: "/courses/delete_subject",
+      type: "GET",
+      data: {course_params_id: courseSubjectId}
+    });
+  });
+</script>

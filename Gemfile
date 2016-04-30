@@ -45,3 +45,5 @@ group :development do
   gem 'spring'
 end
 gem 'angular-rails-templates'
+gem 'jquery-ui-rails'
+gem "font-awesome-rails"

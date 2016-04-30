@@ -1,29 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <p>
+    <strong>Name:</strong>
+    <%= @course.name %>
+  </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
+  <p>
+    <strong>Duration:</strong>
+    <%= @course.duration %>
+  </p>
 
-<p>
-  <strong>Duration:</strong>
-  <%= @course.duration %>
-</p>
-
-<p>
-  <strong>Department:</strong>
-  <%= @course.department.try(:name) %>
-</p>
-
-<div>
-  <% @course.sections.each do |section| %>
-    <%= section.name %>
-    <br>
-    <% section.section_subjects.each do |section_subject| %>
-      <%= section_subject.course_subject.subject.try(:name)%>
-    <% end%>
-  <% end %>
+  <p>
+    <strong>Department:</strong>
+    <%= @course.department.try(:name) %>
+  </p>
+  <div id="course-subject-list">
+    <%= render "course_subject_list", course: @course %>
+    <%= render "course_section_list", course: @course %>
+  </div>
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#include-subjects">
+    Include Subjects
+  </button>
+  <div class="modal fade" id="include-subjects" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <%= render "include_subjects"%>
+  </div>
+  <%= link_to 'Edit', edit_course_path(@course) %> |
+  <%= link_to 'Back', courses_path %>
 </div>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<div class="modal fade" id="edit-course-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+</div>

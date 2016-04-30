@@ -11,23 +11,97 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+  <div class="row">
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :first_name %><br>
+      <%= f.text_field :first_name, class: "input-lg form-control  " %>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :middle_name %><br>
+      <%= f.text_field :middle_name, class: "input-lg form-control  " %>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :last_name %><br>
+      <%= f.text_field :last_name, class: "input-lg form-control  " %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :middle_name %><br>
-    <%= f.text_field :middle_name %>
+  <div class="row">
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :date_of_birth %><br>
+      <%= f.text_field :date_of_birth, class: "input-lg form-control  datepicker" %>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :admission_date %><br>
+      <%= f.text_field :admission_date, class: "input-lg form-control datepicker" %>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :enrollment_date %><br>
+      <%= f.text_field :enrollment_date, class: "input-lg form-control  datepicker" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+  <div class="row">
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :admission_number %><br>
+      <%= f.text_field :admission_number, class: "input-lg form-control  " %>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :enrollment_number %><br>
+      <%= f.text_field :enrollment_number, class: "input-lg form-control  " %>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :email %><br>
+      <%= f.text_field :email, class: "input-lg form-control  " %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :batch_id %><br>
-    <%= f.text_field :batch_id %>
+  <div class="row">
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :relegion %><br>
+      <%= f.text_field :relegion, class: "input-lg form-control  " %>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :category %><br>
+      <%= f.text_field :category, class: "input-lg form-control  " %>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :contact %><br>
+      <%= f.text_field :contact, class: "input-lg form-control  " %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :city %><br>
+      <%= f.text_field :city, class: "input-lg form-control  " %>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :state %><br>
+      <%= f.text_field :state, class: "input-lg form-control  " %>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :country %><br>
+      <%= f.text_field :country , class: "input-lg form-control  " %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :course %><br>
+      <%= f.select :course_id, options_for_select(Course.all.collect {|p| [ p.name, p.id ] },(f.object.try(:course_id))),{include_blank: 'None'}, { :class => 'form-control input-lg'} %>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :batch %><br>
+      <%= f.select :batch_id, options_for_select(Batch.all.collect {|p| [ p.start_year, p.id ] },(f.object.try(:course_id))),{include_blank: 'None'}, { :class => 'form-control input-lg'} %>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :address %><br>
+      <%= f.text_area :address , class: "input-lg form-control  " %>
+    </div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary"%>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $(".datepicker").datepicker({
+    format: "yyyy-mm-dd"
+  });
+</script>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160430140418) do
+ActiveRecord::Schema.define(version: 20160430221242) do
 
   create_table "batches", force: :cascade do |t|
     t.date     "start_year"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 20160430140418) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "section_subjects", force: :cascade do |t|
     t.integer  "section_id"
     t.integer  "course_subject_id"
@@ -73,9 +82,23 @@ ActiveRecord::Schema.define(version: 20160430140418) do
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
+    t.string   "email"
+    t.string   "contact"
+    t.text     "address"
+    t.date     "date_of_birth"
+    t.date     "admission_date"
+    t.date     "enrollment_date"
+    t.string   "admission_number"
+    t.string   "enrollment_number"
+    t.string   "category"
+    t.string   "relegion"
+    t.integer  "course_id"
     t.integer  "batch_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
   end
 
   add_index "students", ["batch_id"], name: "index_students_on_batch_id"

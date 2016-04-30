@@ -13,7 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.dataTables.min
 //= require bootstrap
+//= require moment.min
+//= require footable
+//= require fullcalendar
+//= require jquery-ui/datepicker
 //= require angular.min
 //= require angular-rails-templates
 //= require_tree ../templates

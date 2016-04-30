@@ -1,0 +1,14 @@
+<div class="container">
+  <div id="event-calendar"></div>
+</div>
+
+<script type="text/javascript">
+  $("#event-calendar").fullCalendar({
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'month,agendaWeek,agendaDay'
+    },
+    events: "/events/calendar_events"
+  });
+</script>

@@ -1,13 +1,27 @@
 Rails.application.routes.draw do
+  resources :events  do
+    collection do
+      get :event_calendar
+      get :calendar_events
+    end
+  end
   resources :students
   resources :batches
   get 'home/index'
   root to: "home#index"
 
   resources :sections
-  resources :courses
+  resources :courses do
+    collection do
+      post :include_subjects
+      get :delete_subject
+    end
+  end
   resources :subjects
   resources :departments
+
+  get '/inactive_students' => "students#inactive_students"
+  get '/active_students' => "students#active_students"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

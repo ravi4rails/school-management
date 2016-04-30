@@ -1,0 +1,2 @@
+$("#edit-course-modal").modal('hide')
+$('#course_<%= @course.id %>').replaceWith("<%= escape_javascript(render('course', course: @course )) %>")

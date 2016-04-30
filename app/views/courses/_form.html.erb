@@ -1,29 +1,30 @@
-<%= form_for(@course) do |f| %>
-  <% if @course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
-
-      <ul>
-      <% @course.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for @course, :remote => true do |f| %>
+  <div class="modal-body">
+    <% if @course.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+        <ul>
+        <% @course.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control input-lg" %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <div class="field">
+      <%= f.label :duration %>
+      <%= f.text_field :duration, class: "form-control input-lg" %>
+    </div>
+    <div class="field">
+      <%= f.label :department %>
+      <%= f.select :department_id, options_for_select(Department.all.collect {|p| [ p.name, p.id ] },(f.object.try(:department_id))),{include_blank: 'None'}, { :class => 'form-control input-lg'} %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :duration %><br>
-    <%= f.text_field :duration %>
-  </div>
-  <div class="field">
-    <%= f.label :department_id %><br>
-    <%= f.text_field :department_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Close</button>
+    <%= f.submit "Save Course", class: "btn btn-lg btn-primary" %>
   </div>
 <% end %>

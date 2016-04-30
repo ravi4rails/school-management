@@ -1,12 +1,9 @@
 class Student < ActiveRecord::Base
   belongs_to :batch
+  belongs_to :course
 
-
-  def self.active_students
-    Batch.where(:is_active => true).joins(:students)
+  def full_name
+    "#{first_name} #{middle_name} #{last_name}"
   end
 
-  def self.inactive_students
-    Batch.where(:is_active => false).joins(:students)
-  end
 end

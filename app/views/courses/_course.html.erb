@@ -1,0 +1,8 @@
+<tr id="course_<%= course.id%>">
+  <td><%= course.name %></td>
+  <td><%= course.duration %></td>
+  <td><%= course.department.try(:name) %></td>
+  <td><%= link_to 'Show', course, class: "btn btn-info" %></td>
+  <td><%= link_to 'Edit', edit_course_path(course), :remote => true, class: "btn btn-warning" %></td>
+  <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, class: "btn btn-danger" %></td>
+</tr>
