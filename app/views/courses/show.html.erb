@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @course.name %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @course.duration %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @course.department.try(:name) %>
+</p>
+
+<div>
+  <% @course.sections.each do |section| %>
+    <%= section.name %>
+    <br>
+    <% section.section_subjects.each do |section_subject| %>
+      <%= section_subject.course_subject.subject.try(:name)%>
+    <% end%>
+  <% end %>
+</div>
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>
