@@ -1,0 +1,6 @@
+<tr id="subject_<%= subject.id %>">
+  <td><%= subject.name %></td>
+  <td><%= link_to 'Show', subject, class: "btn btn-info" %></td>
+  <td><%= link_to 'Edit', edit_subject_path(subject), :remote => true, class: "btn btn-warning" %></td>
+  <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, class: "btn btn-danger" %></td>
+</tr>

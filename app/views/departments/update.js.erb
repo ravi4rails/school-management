@@ -1,0 +1,2 @@
+$("#edit-department-modal").modal('hide')
+$('#department_<%= @department.id %>').replaceWith("<%= escape_javascript(render('department', department: @department )) %>")

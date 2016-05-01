@@ -1,0 +1,6 @@
+<tr id="department_<%= department.id%>">
+  <td><%= department.name %></td>
+  <td><%= link_to 'Show', department, class: "btn btn-info" %></td>
+  <td><%= link_to 'Edit', edit_department_path(department), :remote => true, class: "btn btn-warning" %></td>
+  <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, class: "btn btn-danger" %></td>
+</tr>

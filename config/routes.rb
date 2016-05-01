@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  resources :employees
   resources :events  do
     collection do
       get :event_calendar
