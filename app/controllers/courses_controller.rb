@@ -66,6 +66,9 @@ class CoursesController < ApplicationController
     @course_subject.destroy
   end
 
+  def include_section_subjects
+  end
+
   private
 
     def set_course

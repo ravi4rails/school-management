@@ -1,0 +1,61 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel">Add New Guardian For <strong class="text-primary"><%= "#{@student.full_name}"%></strong></h4>
+    </div>
+    <%= form_for :student_guardians, :url => student_guardians_students_path, :method => "post", :remote => true do |f| %>
+      <%= f.hidden_field :student_id, :value => @student.id %>
+      <div class="form-group col-md-12 col-xs-12">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, class: "form-control input-lg" %>
+      </div>
+      <div class="form-group col-md-12 col-xs-12">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, class: "form-control input-lg" %>
+      </div>
+      <div class="form-group col-md-12 col-xs-12">
+        <%= f.label :age %>
+        <%= f.text_field :age, class: "form-control input-lg" %>
+      </div>
+      <div class="form-group col-md-12 col-xs-12">
+        <%= f.label :date_of_birth %>
+        <%= f.text_field :date_of_birth, class: "form-control input-lg datepicker" %>
+      </div>
+      <div class="form-group col-md-12 col-xs-12">
+        <%= f.label :relation %>
+        <%= f.text_field :relation, class: "form-control input-lg" %>
+      </div>
+      <div class="form-group col-md-12 col-xs-12">
+        <%= f.label :contact %>
+        <%= f.text_field :contact, class: "form-control input-lg" %>
+      </div>
+      <div class="form-group col-md-12 col-xs-12">
+        <%= f.label :city %>
+        <%= f.text_field :city, class: "form-control input-lg" %>
+      </div>
+      <div class="form-group col-md-12 col-xs-12">
+        <%= f.label :state %>
+        <%= f.text_field :state, class: "form-control input-lg" %>
+      </div>
+      <div class="form-group col-md-12 col-xs-12">
+        <%= f.label :country %>
+        <%= f.text_field :country, class: "form-control input-lg" %>
+      </div>
+      <div class="form-group col-md-12 col-xs-12">
+        <%= f.label :address %>
+        <%= f.text_area :address, class: "form-control input-lg" %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+        <%= f.submit "Save Guardian", class: "btn btn-primary btn-lg" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(".datepicker").datepicker({
+    format: "yyyy-mm-dd"
+  });
+</script>

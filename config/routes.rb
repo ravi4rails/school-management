@@ -7,7 +7,11 @@ Rails.application.routes.draw do
       get :calendar_events
     end
   end
-  resources :students
+  resources :students do
+    collection do
+      post :student_guardians
+    end
+  end
   resources :batches
   get 'home/index'
   root to: "home#index"
@@ -16,6 +20,7 @@ Rails.application.routes.draw do
   resources :courses do
     collection do
       post :include_subjects
+      post :include_section_subjects
       get :delete_subject
     end
   end

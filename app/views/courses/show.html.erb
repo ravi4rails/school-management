@@ -16,13 +16,16 @@
   </p>
   <div id="course-subject-list">
     <%= render "course_subject_list", course: @course %>
-    <%= render "course_section_list", course: @course %>
+    <%#= render "course_section_list", course: @course %>
   </div>
   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#include-subjects">
     Include Subjects
   </button>
   <div class="modal fade" id="include-subjects" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <%= render "include_subjects"%>
+  </div>
+  <div class="modal fade" id="include-section-subjects" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <%= render "include_section_subjects"%>
   </div>
   <%= link_to 'Edit', edit_course_path(@course) %> |
   <%= link_to 'Back', courses_path %>

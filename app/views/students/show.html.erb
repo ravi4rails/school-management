@@ -1,24 +1,34 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <p>
+    <strong>First name:</strong>
+    <%= @student.first_name %>
+  </p>
+  <p>
+    <strong>Middle name:</strong>
+    <%= @student.middle_name %>
+  </p>
+  <p>
+    <strong>Last name:</strong>
+    <%= @student.last_name %>
+  </p>
+  <p>
+    <strong>Batch:</strong>
+    <%= @student.course.try(:name) %>
+  </p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @student.first_name %>
-</p>
+  <div id="student-guardians">
+    <%= render "student_guardians_list", student: @student %>
+  </div>
 
-<p>
-  <strong>Middle name:</strong>
-  <%= @student.middle_name %>
-</p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @student.last_name %>
-</p>
-
-<p>
-  <strong>Batch:</strong>
-  <%= @student.batch %>
-</p>
-
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#student_guardians">
+    Add New Guardian
+  </button>
+  <div class="modal fade" id="student_guardians" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <%= render "student_guardians"%>
+  </div>
+  <br>
+  <%= link_to 'Edit', edit_student_path(@student) %> |
+  <%= link_to 'Back', students_path %>
+</div>
