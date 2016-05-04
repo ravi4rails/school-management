@@ -1,2 +1,6 @@
-$("#course-modal").modal('hide')
-$("#course-index").append("<%= escape_javascript(render('course', course: @course )) %>")
+<% if @course.errors.any? %>
+  $(".error_explanation").html("<%= escape_javascript(render('courses/error'))%>")
+<% else %>
+  $("#course-modal").modal('hide')
+  $("#course-index").append("<%= escape_javascript(render('course', course: @course )) %>")
+<% end %>

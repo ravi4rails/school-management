@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160503105256) do
+ActiveRecord::Schema.define(version: 20160504171852) do
 
   create_table "batches", force: :cascade do |t|
     t.date     "start_year"
@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(version: 20160503105256) do
     t.string   "city"
     t.string   "state"
     t.string   "country"
+    t.integer  "age"
   end
 
   add_index "students", ["batch_id"], name: "index_students_on_batch_id"

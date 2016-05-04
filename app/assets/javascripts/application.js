@@ -19,6 +19,7 @@
 //= require footable
 //= require fullcalendar
 //= require jquery-ui/datepicker
+//= require ckeditor-jquery
 //= require angular.min
 //= require angular-rails-templates
 //= require_tree ../templates

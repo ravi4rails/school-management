@@ -1,12 +1,14 @@
 <%= form_for(@employee) do |f| %>
   <% if @employee.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
-      <ul>
-      <% @employee.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="jumbotron">
+      <div id="error_explanation">
+        <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+        <ul>
+        <% @employee.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
   <div class="row">
@@ -26,7 +28,7 @@
   <div class="row">
     <div class="col-md-4 col-sm-4 col-xs-12">
       <%= f.label :email %>
-      <%= f.text_field :email, class: "form-control input-lg" %>
+      <%= f.email_field :email, class: "form-control input-lg" %>
     </div>
     <div class="col-md-4 col-sm-4 col-xs-12">
       <%= f.label :contact %>
@@ -54,11 +56,11 @@
   <div class="row">
     <div class="col-md-4 col-sm-4 col-xs-12">
       <%= f.label :date_of_birth %>
-      <%= f.text_field :date_of_birth, class: "form-control input-lg" %>
+      <%= f.text_field :date_of_birth, class: "form-control input-lg datepicker" %>
     </div>
     <div class="col-md-4 col-sm-4 col-xs-12">
       <%= f.label :date_of_joining %>
-      <%= f.text_field :date_of_joining, class: "form-control input-lg" %>
+      <%= f.text_field :date_of_joining, class: "form-control input-lg datepicker" %>
     </div>
     <div class="col-md-4 col-sm-4 col-xs-12">
       <%= f.label :qualification %>
@@ -79,3 +81,9 @@
     <%= f.submit class: "btn btn-primary " %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $(".datepicker").datepicker({
+    format: "yyyy-mm-dd"
+  });
+</script>

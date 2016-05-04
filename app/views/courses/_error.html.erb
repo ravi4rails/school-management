@@ -1,0 +1,6 @@
+<h4><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h4>
+<ul>
+  <% @course.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>

@@ -23,6 +23,7 @@ class DepartmentsController < ApplicationController
         format.js
         format.json { render :show, status: :created, location: @department }
       else
+        format.js
         format.html { render :new }
         format.json { render json: @department.errors, status: :unprocessable_entity }
       end
@@ -36,6 +37,7 @@ class DepartmentsController < ApplicationController
         format.js
         format.json { render :show, status: :ok, location: @department }
       else
+        format.js
         format.html { render :edit }
         format.json { render json: @department.errors, status: :unprocessable_entity }
       end

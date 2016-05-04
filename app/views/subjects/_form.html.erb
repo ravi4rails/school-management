@@ -1,15 +1,7 @@
 <%= form_for @subject, :remote => true do |f| %>
   <div class="modal-body">
-    <% if @subject.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
-        <ul>
-        <% @subject.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+    <div class="error_explanation">
+    </div>
     <div class="field">
       <%= f.label :name %>
       <%= f.text_field :name, class: "form-control input-lg" %>

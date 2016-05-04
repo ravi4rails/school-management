@@ -1,16 +1,16 @@
 <%= form_for(@student) do |f| %>
   <% if @student.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
-
-      <ul>
-      <% @student.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="jumbotron">
+      <div id="error_explanation">
+        <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+        <ul>
+        <% @student.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
-
   <div class="row">
     <div class="col-md-4 col-xs-12">
       <%= f.label :first_name %><br>
@@ -50,7 +50,7 @@
     </div>
     <div class="col-md-4 col-xs-12">
       <%= f.label :email %><br>
-      <%= f.text_field :email, class: "input-lg form-control  " %>
+      <%= f.email_field :email, class: "input-lg form-control  " %>
     </div>
   </div>
   <div class="row">
@@ -90,6 +90,12 @@
       <%= f.label :batch %><br>
       <%= f.select :batch_id, options_for_select(Batch.all.collect {|p| [ p.start_year, p.id ] },(f.object.try(:course_id))),{include_blank: 'None'}, { :class => 'form-control input-lg'} %>
     </div>
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :age %><br>
+      <%= f.text_field :age , class: "input-lg form-control  " %>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-4 col-xs-12">
       <%= f.label :address %><br>
       <%= f.text_area :address , class: "input-lg form-control  " %>

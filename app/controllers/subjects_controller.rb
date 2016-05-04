@@ -24,6 +24,7 @@ class SubjectsController < ApplicationController
         format.js
         format.json { render :show, status: :created, location: @subject }
       else
+        format.js
         format.html { render :new }
         format.json { render json: @subject.errors, status: :unprocessable_entity }
       end
@@ -37,6 +38,7 @@ class SubjectsController < ApplicationController
         format.js
         format.json { render :show, status: :ok, location: @subject }
       else
+        format.js
         format.html { render :edit }
         format.json { render json: @subject.errors, status: :unprocessable_entity }
       end
