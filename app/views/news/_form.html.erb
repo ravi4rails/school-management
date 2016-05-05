@@ -1,0 +1,30 @@
+<%= form_for(@news) do |f| %>
+  <% if @news.errors.any? %>
+    <div class="jumbotron">
+      <div class="error_explanation">
+        <h4><%= pluralize(@news.errors.count, "error") %> prohibited this news from being saved:</h4>
+        <ul>
+        <% @news.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "form-control input-lg" %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content, class: "form-control ckeditor" %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $('.ckeditor').ckeditor();
+</script>

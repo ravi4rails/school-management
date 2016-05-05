@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160504191333) do
+ActiveRecord::Schema.define(version: 20160505025826) do
 
   create_table "batches", force: :cascade do |t|
     t.date     "start_year"
@@ -97,6 +97,13 @@ ActiveRecord::Schema.define(version: 20160504191333) do
   end
 
   add_index "guardians", ["student_id"], name: "index_guardians_on_student_id"
+
+  create_table "news", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "section_subjects", force: :cascade do |t|
     t.integer  "section_id"
