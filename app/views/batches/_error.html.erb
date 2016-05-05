@@ -1,0 +1,6 @@
+<h4><%= pluralize(@batch.errors.count, "error") %> prohibited this batch from being saved:</h4>
+<ul>
+  <% @batch.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>

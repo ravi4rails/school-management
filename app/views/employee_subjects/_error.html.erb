@@ -1,0 +1,6 @@
+<h4><%= pluralize(@employee_subject.errors.count, "error") %> prohibited this employee_subject from being saved:</h4>
+<ul>
+  <% @employee_subject.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>

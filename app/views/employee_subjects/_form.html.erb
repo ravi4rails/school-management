@@ -1,0 +1,28 @@
+<%= form_for @employee_subject, :remote => true do |f| %>
+  <div class="modal-body">
+    <div class="error_explanation">
+    </div>
+    <div class="field">
+      <%= f.label :department %><br>
+      <%= f.select :department_id, options_for_select(Department.all.collect {|p| [ p.name, p.id ] },(f.object.try(:department_id))),{include_blank: 'None'}, { :class => 'form-control input-lg'} %>
+    </div>
+
+    <div class="field">
+      <%= f.label :course %><br>
+      <%= f.select :course_id, options_for_select(Course.all.collect {|p| [ p.name, p.id ] },(f.object.try(:course_id))),{include_blank: 'None'}, { :class => 'form-control input-lg'} %>
+    </div>
+
+    <div class="field">
+      <%= f.label :employee_id %><br>
+      <%= f.select :employee_id, options_for_select(Employee.all.collect {|p| [ p.name, p.id ] },(f.object.try(:employee_id))),{include_blank: 'None'}, { :class => 'form-control input-lg'} %>
+    </div>
+    <div class="field">
+      <%= f.label :subject_id %><br>
+      <%= f.select :subject_id, options_for_select(Subject.all.collect {|p| [ p.name, p.id ] },(f.object.try(:subject_id))),{include_blank: 'None'}, { :class => 'form-control input-lg'} %>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Close</button>
+    <%= f.submit "Assign Subject", class: "btn btn-lg btn-primary" %>
+  </div>
+<% end %>

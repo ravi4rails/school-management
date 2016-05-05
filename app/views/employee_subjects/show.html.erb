@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @employee_subject.employee %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @employee_subject.subject %>
+</p>
+
+<%= link_to 'Edit', edit_employee_subject_path(@employee_subject), :remote => true %> |
+<%= link_to 'Back', employee_subjects_path %>

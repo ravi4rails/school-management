@@ -27,8 +27,10 @@
   <div class="modal fade" id="include-section-subjects" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <%= render "include_section_subjects"%>
   </div>
-  <%= link_to 'Edit', edit_course_path(@course) %> |
+  <%= link_to 'Edit', edit_course_path(@course), :remote => true %> |
   <%= link_to 'Back', courses_path %>
+</div>
+<div class="modal fade" id="edit-course-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 </div>
 <div class="modal fade" id="edit-course-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 </div>

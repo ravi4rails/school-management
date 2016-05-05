@@ -1,0 +1,6 @@
+<% if @employee_subject.errors.any? %>
+  $(".error_explanation").html("<%= escape_javascript(render('employee_subjects/error'))%>")
+<% else %>
+  $("#editEmployeeSubject").modal('hide')
+  $("#employee_subject_<%= @employee_subject.id %>").replaceWith("<%= escape_javascript(render('employee_subject', employee_subject: @employee_subject )) %>")
+<% end %>

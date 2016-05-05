@@ -1,33 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="jumbotron">
+    <h1>Listing Batches</h1>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Start year</th>
+          <th>End year</th>
+          <th>Is active</th>
+          <th>Course</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody id="batch-index">
+        <% @batches.each do |batch| %>
+          <tr id="batch_<%= batch.id %>">
+            <td><%= batch.start_year %></td>
+            <td><%= batch.end_year %></td>
+            <td><%= batch.is_active %></td>
+            <td><%= batch.course.try(:name) %></td>
+            <td><%= link_to 'Show', batch, class: "btn btn-info" %></td>
+            <td><%= link_to 'Edit', edit_batch_path(batch), class: "btn btn-warning", :remote => true %></td>
+            <td><%= link_to 'Destroy', batch, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :remote => true %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-<h1>Listing Batches</h1>
+  <br>
 
-<table>
-  <thead>
-    <tr>
-      <th>Start year</th>
-      <th>End year</th>
-      <th>Is active</th>
-      <th>Course</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <%= link_to 'New Batch', new_batch_path, class: "btn btn-primary", :remote => true %>
 
-  <tbody>
-    <% @batches.each do |batch| %>
-      <tr>
-        <td><%= batch.start_year %></td>
-        <td><%= batch.end_year %></td>
-        <td><%= batch.is_active %></td>
-        <td><%= batch.course.try(:name) %></td>
-        <td><%= link_to 'Show', batch %></td>
-        <td><%= link_to 'Edit', edit_batch_path(batch) %></td>
-        <td><%= link_to 'Destroy', batch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Batch', new_batch_path %>
+</div>
+<div class="modal fade" id="newBatch" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+</div>
+<div class="modal fade" id="editBatch" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+</div>

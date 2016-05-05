@@ -1,0 +1,6 @@
+<% if @batch.errors.any? %>
+  $(".error_explanation").html("<%= escape_javascript(render('batches/error'))%>")
+<% else %>
+  $("#newBatch").modal('hide')
+  $("#batch-index").append("<%= escape_javascript(render('batch', batch: @batch )) %>")
+<% end %>

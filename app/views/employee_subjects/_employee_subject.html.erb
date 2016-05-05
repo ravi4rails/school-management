@@ -1,0 +1,7 @@
+<tr id="employee_subject_<%= employee_subject.id %>">
+  <td><%= employee_subject.employee.try(:name) %></td>
+  <td><%= employee_subject.subject.try(:name) %></td>
+  <td><%= link_to 'Show', employee_subject, class: "btn btn-info" %></td>
+  <td><%= link_to 'Edit', edit_employee_subject_path(employee_subject), class: "btn btn-warning", :remote => true %></td>
+  <td><%= link_to 'Destroy', employee_subject, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", :remote => true %></td>
+</tr>
