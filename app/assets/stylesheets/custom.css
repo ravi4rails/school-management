@@ -13,3 +13,10 @@
   color:#fff;
   background-color: #337ab7;
 }
+.search_form {
+  padding-top:20px;
+  padding-bottom:20px;
+}
+.inner-icon {
+  margin-bottom:-50px !important;
+}

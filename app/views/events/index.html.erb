@@ -3,6 +3,16 @@
   <div class="jumbotron">
     <h1>Listing Events</h1>
   </div>
+  <div class="search_form">
+    <%= search_form_for @search do |f| %>
+      <div class="input-group">
+        <%= f.text_field :title_cont, :placeholder => "Search Event", class: "form-control" %>
+        <span class="input-group-btn">
+          <%= f.submit "Search", class: "btn btn-primary" %>
+        </span>
+      </div>
+    <% end %>
+  </div>
   <div class="table-responsive">
   <table class="table">
       <thead>

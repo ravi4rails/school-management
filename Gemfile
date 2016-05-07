@@ -51,3 +51,4 @@ gem "font-awesome-rails"
 gem 'rails_12factor', group: :production
 gem 'devise'
 gem 'ckeditor_rails'
+gem 'ransack'

@@ -2,7 +2,8 @@ class DepartmentsController < ApplicationController
   before_action :set_department, only: [:show, :edit, :update, :destroy]
 
   def index
-    @departments = Department.all
+    @search = Department.search(params[:q])
+    @departments = @search.result
   end
 
   def show

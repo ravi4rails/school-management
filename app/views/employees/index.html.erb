@@ -3,6 +3,16 @@
   <div class="jumbotron">
     <h2>Listing Employees</h2>
   </div>
+  <div class="search_form">
+    <%= search_form_for @search do |f| %>
+      <div class="input-group">
+        <%= f.text_field :first_name_or_middle_name_cont, :placeholder => "Search Employee", class: "form-control" %>
+        <span class="input-group-btn">
+          <%= f.submit "Search Employee", class: "btn btn-primary" %>
+        </span>
+      </div>
+    <% end %>
+  </div>
   <div class="table-responsive">
     <table class="table">
       <thead>

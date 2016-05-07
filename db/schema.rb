@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160505184032) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "batches", force: :cascade do |t|
     t.date     "start_year"
     t.date     "end_year"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 20160505184032) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "batches", ["course_id"], name: "index_batches_on_course_id"
+  add_index "batches", ["course_id"], name: "index_batches_on_course_id", using: :btree
 
   create_table "course_subjects", force: :cascade do |t|
     t.integer  "subject_id"
@@ -31,8 +34,8 @@ ActiveRecord::Schema.define(version: 20160505184032) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "course_subjects", ["course_id"], name: "index_course_subjects_on_course_id"
-  add_index "course_subjects", ["subject_id"], name: "index_course_subjects_on_subject_id"
+  add_index "course_subjects", ["course_id"], name: "index_course_subjects_on_course_id", using: :btree
+  add_index "course_subjects", ["subject_id"], name: "index_course_subjects_on_subject_id", using: :btree
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
@@ -42,7 +45,7 @@ ActiveRecord::Schema.define(version: 20160505184032) do
     t.datetime "updated_at",    null: false
   end
 
-  add_index "courses", ["department_id"], name: "index_courses_on_department_id"
+  add_index "courses", ["department_id"], name: "index_courses_on_department_id", using: :btree
 
   create_table "departments", force: :cascade do |t|
     t.string   "name"
@@ -59,8 +62,8 @@ ActiveRecord::Schema.define(version: 20160505184032) do
     t.datetime "updated_at",    null: false
   end
 
-  add_index "employee_subjects", ["employee_id"], name: "index_employee_subjects_on_employee_id"
-  add_index "employee_subjects", ["subject_id"], name: "index_employee_subjects_on_subject_id"
+  add_index "employee_subjects", ["employee_id"], name: "index_employee_subjects_on_employee_id", using: :btree
+  add_index "employee_subjects", ["subject_id"], name: "index_employee_subjects_on_subject_id", using: :btree
 
   create_table "employees", force: :cascade do |t|
     t.string   "first_name"
@@ -81,7 +84,7 @@ ActiveRecord::Schema.define(version: 20160505184032) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "employees", ["department_id"], name: "index_employees_on_department_id"
+  add_index "employees", ["department_id"], name: "index_employees_on_department_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "title"
@@ -108,7 +111,7 @@ ActiveRecord::Schema.define(version: 20160505184032) do
     t.datetime "updated_at",    null: false
   end
 
-  add_index "guardians", ["student_id"], name: "index_guardians_on_student_id"
+  add_index "guardians", ["student_id"], name: "index_guardians_on_student_id", using: :btree
 
   create_table "news", force: :cascade do |t|
     t.string   "title"
@@ -124,8 +127,8 @@ ActiveRecord::Schema.define(version: 20160505184032) do
     t.datetime "updated_at",        null: false
   end
 
-  add_index "section_subjects", ["course_subject_id"], name: "index_section_subjects_on_course_subject_id"
-  add_index "section_subjects", ["section_id"], name: "index_section_subjects_on_section_id"
+  add_index "section_subjects", ["course_subject_id"], name: "index_section_subjects_on_course_subject_id", using: :btree
+  add_index "section_subjects", ["section_id"], name: "index_section_subjects_on_section_id", using: :btree
 
   create_table "sections", force: :cascade do |t|
     t.string   "name"
@@ -134,7 +137,7 @@ ActiveRecord::Schema.define(version: 20160505184032) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "sections", ["course_id"], name: "index_sections_on_course_id"
+  add_index "sections", ["course_id"], name: "index_sections_on_course_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "first_name"
@@ -160,7 +163,7 @@ ActiveRecord::Schema.define(version: 20160505184032) do
     t.integer  "age"
   end
 
-  add_index "students", ["batch_id"], name: "index_students_on_batch_id"
+  add_index "students", ["batch_id"], name: "index_students_on_batch_id", using: :btree
 
   create_table "subjects", force: :cascade do |t|
     t.string   "name"
@@ -192,7 +195,19 @@ ActiveRecord::Schema.define(version: 20160505184032) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "batches", "courses"
+  add_foreign_key "course_subjects", "courses"
+  add_foreign_key "course_subjects", "subjects"
+  add_foreign_key "courses", "departments"
+  add_foreign_key "employee_subjects", "employees"
+  add_foreign_key "employee_subjects", "subjects"
+  add_foreign_key "employees", "departments"
+  add_foreign_key "guardians", "students"
+  add_foreign_key "section_subjects", "course_subjects"
+  add_foreign_key "section_subjects", "sections"
+  add_foreign_key "sections", "courses"
+  add_foreign_key "students", "batches"
 end
