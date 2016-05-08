@@ -1,9 +1,77 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="col-md-12 col-xs-12">
+    <p class="dept-name">
+      <strong>Name:</strong>
+      <%= @department.name %>
+    </p>
+  </div>
+  <div class="col-md-12 col-xs-12 department-desc">
+    <div class="jumbotron">
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                List of Employees
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              <ul>
+                <% @department.employees.each do |employee| %>
+                  <li>
+                    <a class="dept-employee" data-employee-id="<%= employee.id%>" data-toggle="modal" data-target="#deptEmployeeModal" href="#" >
+                      <%= employee.name %>
+                    </a>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                List of Courses
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <ul>
+                <% @department.courses.each do |employee| %>
+                  <li>
+                    <a href="#" >
+                      <%= employee.name %>
+                    </a>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 col-xs-12">
+    <%= link_to 'Edit', edit_department_path(@department) %> |
+    <%= link_to 'Back', departments_path %>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @department.name %>
-</p>
+<div class="modal fade" id="deptEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+</div>
 
-<%= link_to 'Edit', edit_department_path(@department) %> |
-<%= link_to 'Back', departments_path %>
+<script type="text/javascript">
+  $(".dept-employee").on('click', function(){
+    var employeeId = $(this).data("employee-id");
+    $.ajax({
+      url: "/departments/department_employee",
+      type: "GET",
+      data: {employee_id : employeeId }
+    });
+  });
+</script>

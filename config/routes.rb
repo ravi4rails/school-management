@@ -28,7 +28,11 @@ Rails.application.routes.draw do
     end
   end
   resources :subjects
-  resources :departments
+  resources :departments do
+    collection do
+      get :department_employee
+    end
+  end
 
   get '/inactive_students' => "students#inactive_students"
   get '/active_students' => "students#active_students"

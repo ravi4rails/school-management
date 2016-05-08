@@ -54,6 +54,10 @@ class DepartmentsController < ApplicationController
     end
   end
 
+  def department_employee
+    @employee = Employee.find(params[:employee_id])
+  end
+
   private
 
     def set_department
