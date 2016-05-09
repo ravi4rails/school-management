@@ -8,11 +8,11 @@
     <strong>Description:</strong>
     <%= @task.description %>
   </p>
-  <% if @task.employee_tasks.present? %>
+  <% if @task.employees.present? %>
     <div class="jumbotron">
       <h4>Employee list for this task</h4>
-      <% @task.employee_tasks.each do |employee_task| %>
-        <h5><%= link_to employee_task.try(:employee).try(:name), employee_path(employee_task.employee) %></h5>
+      <% @task.employees.each do |employee| %>
+        <h5><a data-toggle="modal" data-target="#deptEmployeeModal" href="#" data-emp-id="<%= employee.id %>" class="task-employee" data-remote="true"><%= employee.try(:name)%></a></h5>
       <% end %>
     </div>
   <% else %>
@@ -27,3 +27,17 @@
 <div class="modal fade" id="assignTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <%= render "tasks/assign_task" %>
 </div>
+
+<div class="modal fade" id="deptEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+</div>
+
+<script type="text/javascript">
+  $(".task-employee").on('click', function(){
+    var employeeId = $(this).data("emp-id");
+    $.ajax({
+      url: "/departments/department_employee",
+      type: "GET",
+      data: {employee_id : employeeId }
+    });
+  });
+</script>
