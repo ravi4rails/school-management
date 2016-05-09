@@ -1,4 +1,4 @@
-var options = '<option value="">Select Employee</option>'
+var options = '';
 <% @employees.each do |employee|%>
 options += '<option value="<%= employee.id%>"><%= employee.name%></option>'
 <%end%>

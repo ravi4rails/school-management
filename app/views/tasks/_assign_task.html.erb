@@ -2,14 +2,12 @@
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <h4 class="modal-title" id="myModalLabel">Include Subjects into this course.</h4>
+      <h4 class="modal-title" id="myModalLabel">Assign This Task To Employees</h4>
     </div>
     <%= form_for :assign_task, :url => assign_task_tasks_path, :method => 'post', :remote => true do |f| %>
       <div class="modal-body">
         <%= f.hidden_field :task_id, :value => @task.id %>
-        <h3>Select A Department</h3>
         <%= f.select :department, options_for_select(Department.all.collect {|p| [ p.name, p.id ] },(f.object.try(:department))),{:prompt => "Select Department"}, { :class => 'input-lg form-control'} %>
-        <h3>Select Employees For This Task</h3>
         <%= f.select :employees, [], {:prompt => "Select Employee"}, { :class => 'input-lg form-control', multiple: true} %>
       </div>
       <div class="modal-footer">

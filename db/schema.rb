@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505184032) do
+ActiveRecord::Schema.define(version: 20160509123239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,16 @@ ActiveRecord::Schema.define(version: 20160505184032) do
 
   add_index "employee_subjects", ["employee_id"], name: "index_employee_subjects_on_employee_id", using: :btree
   add_index "employee_subjects", ["subject_id"], name: "index_employee_subjects_on_subject_id", using: :btree
+
+  create_table "employee_tasks", force: :cascade do |t|
+    t.integer  "employee_id"
+    t.integer  "task_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "employee_tasks", ["employee_id"], name: "index_employee_tasks_on_employee_id", using: :btree
+  add_index "employee_tasks", ["task_id"], name: "index_employee_tasks_on_task_id", using: :btree
 
   create_table "employees", force: :cascade do |t|
     t.string   "first_name"
@@ -204,6 +214,8 @@ ActiveRecord::Schema.define(version: 20160505184032) do
   add_foreign_key "courses", "departments"
   add_foreign_key "employee_subjects", "employees"
   add_foreign_key "employee_subjects", "subjects"
+  add_foreign_key "employee_tasks", "employees"
+  add_foreign_key "employee_tasks", "tasks"
   add_foreign_key "employees", "departments"
   add_foreign_key "guardians", "students"
   add_foreign_key "section_subjects", "course_subjects"

@@ -55,6 +55,12 @@ class TasksController < ApplicationController
   end
 
   def assign_task    
+    @task = Task.find(params[:assign_task][:task_id])
+    params[:assign_task][:employees].delete("")
+    employee_array = params[:assign_task][:employees]
+    employee_array.each do |employee|
+      EmployeeTask.create(:employee_id => employee.to_i, :task_id => @task.id )
+    end
   end
 
   def get_department_employee

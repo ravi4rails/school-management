@@ -1,17 +1,29 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
-
   <p>
     <strong>Title:</strong>
     <%= @task.title %>
   </p>
-
   <p>
     <strong>Description:</strong>
     <%= @task.description %>
   </p>
-
+  <% if @task.employee_tasks.present? %>
+    <div class="jumbotron">
+      <h4>Employee list for this task</h4>
+      <% @task.employee_tasks.each do |employee_task| %>
+        <h5><%= link_to employee_task.try(:employee).try(:name), employee_path(employee_task.employee) %></h5>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="jumbotron">
+      <h4>This task is unsigned yet.</h4>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#assignTask">Assign Task</button>
+    </div>
+  <% end %>
   <%= link_to 'Edit', edit_task_path(@task) %> |
   <%= link_to 'Back', tasks_path %>
-
+</div>
+<div class="modal fade" id="assignTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <%= render "tasks/assign_task" %>
 </div>
