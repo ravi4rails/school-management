@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do 
       post :assign_task
       get :get_department_employee
+      put :update_task_status
     end
   end
   devise_for :users

@@ -62,6 +62,11 @@
         <%= @employee.department.try(:name) %>
       </p>
 
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        My Tasks
+      </button>
+
+
       <%= link_to 'Edit', edit_employee_path(@employee) %> |
       <%= link_to 'Back', employees_path %>
     </div>
@@ -69,4 +74,8 @@
 
     </div>
   </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <%= render :partial => "employees/employee_tasks", locals: { employee: @employee } %>
 </div>
