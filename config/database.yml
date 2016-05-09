@@ -1,9 +1,6 @@
 development:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
+  database: school-management
   username: postgres
-  password: 123456
-  host: localhost
-  port: 5432
-  database: school_management
-  pool: 5
+  password: postgres

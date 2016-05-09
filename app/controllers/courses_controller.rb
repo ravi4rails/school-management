@@ -72,6 +72,10 @@ class CoursesController < ApplicationController
   def include_section_subjects
   end
 
+  def active_batch_list
+    @course = Course.find(params[:course_id])
+  end
+
   private
 
     def set_course

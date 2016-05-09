@@ -1,0 +1,5 @@
+var options = '<option value="">Select Employee</option>'
+<% @employees.each do |employee|%>
+options += '<option value="<%= employee.id%>"><%= employee.name%></option>'
+<%end%>
+$("#assign_task_employees").html(options);

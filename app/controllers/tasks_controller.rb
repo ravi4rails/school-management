@@ -54,6 +54,14 @@ class TasksController < ApplicationController
     end
   end
 
+  def assign_task    
+  end
+
+  def get_department_employee
+    @department = Department.find(params[:department_id])
+    @employees = @department.employees
+  end
+
   private
 
     def set_task

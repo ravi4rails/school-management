@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   resources :employee_subjects
   resources :news
-  resources :tasks
+  resources :tasks do 
+    collection do 
+      post :assign_task
+      get :get_department_employee
+    end
+  end
   devise_for :users
   resources :employees
   resources :events  do
@@ -25,6 +30,7 @@ Rails.application.routes.draw do
       post :include_subjects
       post :include_section_subjects
       get :delete_subject
+      get :active_batch_list
     end
   end
   resources :subjects

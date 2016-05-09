@@ -14,6 +14,14 @@
     <strong>Department:</strong>
     <%= @course.department.try(:name) %>
   </p>
+
+  <div class="jumbotron">
+    <button class="btn btn-primary btn-lg active-batches" data-course-id="<%= @course.id %>">View Active Batches</button>
+    <div id="active_batch_list">
+      <%#= render "courses/active_batch_list"%>
+    </div>
+  </div>
+
   <div id="course-subject-list">
     <%= render "course_subject_list", course: @course %>
     <%#= render "course_section_list", course: @course %>
@@ -34,3 +42,14 @@
 </div>
 <div class="modal fade" id="edit-course-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 </div>
+
+<script type="text/javascript">
+  $(".active-batches").on('click', function(){
+    var courseId = $(this).data("course-id");
+    $.ajax({
+      type: "GET",
+      url: "/courses/active_batch_list",
+      data: {course_id : courseId }
+    });
+  });
+</script>

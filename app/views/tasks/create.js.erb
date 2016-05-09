@@ -3,4 +3,6 @@
 <% else %>
   $("#newTask").modal('hide')
   $("#task-index").append("<%= escape_javascript(render('task', task: @task )) %>")
+  $("#assignTask").html("<%= escape_javascript(render('tasks/assign_task'))%>")
+  $("#assignTask").modal('show')
 <% end %>
