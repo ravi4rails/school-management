@@ -53,3 +53,5 @@ gem 'devise'
 gem 'ckeditor_rails'
 gem 'ransack'
 gem 'geocoder'
+gem "rmagick"
+gem "carrierwave"

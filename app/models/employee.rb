@@ -7,7 +7,7 @@ class Employee < ActiveRecord::Base
   validates :first_name, :middle_name, :last_name, :age, :email, :date_of_joining, :date_of_birth, :qualification, :presence => true
   validates :email, :uniqueness => true
   validates :age, :numericality => true
-
+  mount_uploader :profile_picture, ImageUploader
   geocoded_by :full_address
   after_validation :geocode
 
@@ -20,5 +20,3 @@ class Employee < ActiveRecord::Base
   end
 
 end
-
-# <!-- AIzaSyDSn87BAlXf3_IKKAXZzb8h2sRLLwMPQhA  -->

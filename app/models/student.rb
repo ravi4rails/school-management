@@ -5,7 +5,7 @@ class Student < ActiveRecord::Base
   validates :first_name, :middle_name, :last_name, :email, :admission_date, :admission_number, :enrollment_number, :enrollment_date, :date_of_birth, :age, :presence => true
   validates :email, :uniqueness => true
   validates :age, :numericality => true
-
+  mount_uploader :profile_picture, ImageUploader
   geocoded_by :full_address
   after_validation :geocode
 

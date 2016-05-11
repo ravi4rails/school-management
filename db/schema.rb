@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511174920) do
+ActiveRecord::Schema.define(version: 20160511181818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20160511174920) do
     t.datetime "updated_at",      null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "profile_picture"
   end
 
   add_index "employees", ["department_id"], name: "index_employees_on_department_id", using: :btree
@@ -175,6 +176,7 @@ ActiveRecord::Schema.define(version: 20160511174920) do
     t.integer  "age"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "profile_picture"
   end
 
   add_index "students", ["batch_id"], name: "index_students_on_batch_id", using: :btree
@@ -207,6 +209,7 @@ ActiveRecord::Schema.define(version: 20160511174920) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "profile_picture"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

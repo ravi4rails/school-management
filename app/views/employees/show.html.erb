@@ -1,77 +1,47 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
-  <div class="row">
-    <div class="col-md-4 col-xs-12">
-      <p>
-    <strong>Name:</strong>
-    <%= @employee.name %>
-      </p>
-
-      <p>
-        <strong>City:</strong>
-        <%= @employee.city %>
-      </p>
-
-      <p>
-        <strong>State:</strong>
-        <%= @employee.state %>
-      </p>
-
-      <p>
-        <strong>Country:</strong>
-        <%= @employee.country %>
-      </p>
-
-      <p>
-        <strong>Email:</strong>
-        <%= @employee.email %>
-      </p>
-
-      <p>
-        <strong>Contact:</strong>
-        <%= @employee.contact %>
-      </p>
-
-      <p>
-        <strong>Address:</strong>
-        <%= @employee.address %>
-      </p>
-
-      <p>
-        <strong>Date of birth:</strong>
-        <%= @employee.date_of_birth %>
-      </p>
-
-      <p>
-        <strong>Age:</strong>
-        <%= @employee.age %>
-      </p>
-
-      <p>
-        <strong>Date of joining:</strong>
-        <%= @employee.date_of_joining %>
-      </p>
-
-      <p>
-        <strong>Qualification:</strong>
-        <%= @employee.qualification %>
-      </p>
-
-      <p>
-        <strong>Department:</strong>
-        <%= @employee.department.try(:name) %>
-      </p>
-
-      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-        My Tasks
-      </button>
-
-
-      <%= link_to 'Edit', edit_employee_path(@employee) %> |
-      <%= link_to 'Back', employees_path %>
-    </div>
-    <div class="col-md-8 col-xs-12">
-      <div id="map" style="width:100%;height:400px;"></div>
+  <div class="profile-section">
+    <div class="row">
+      <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12 left-side-bar">
+        <div class="emp-profile">
+          <%= image_tag @employee.try(:profile_picture), class: "img-profile profile-img" %>
+          <h4>
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <span class="emp-info"><%= @employee.name %></span>
+          </h4>
+          <h4>
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <span class="emp-info"><%= @employee.email %></span>
+          </h4>
+          <h4>
+            <i class="fa fa-building-o" aria-hidden="true"></i>
+            <span class="emp-info"><%= @employee.department.try(:name) %></span>
+          </h4>
+          <h4>
+            <i class="fa fa-book" aria-hidden="true"></i>
+            <span class="emp-info"><%= @employee.qualification %></span>
+          </h4>
+          <h4>
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <span class="emp-info"><%= @employee.contact %></span>
+          </h4>
+          <h4>
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <span class="emp-info"><%= @employee.date_of_birth %>(DOB)</span>
+          </h4>
+          <h4>
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <span class="emp-info"><%= @employee.date_of_joining %>(Joining Date)</span>
+          </h4>
+          <h4>
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <span class="emp-info"><%= @employee.full_address %></span>
+          </h4>
+          <div id="map" style="width:100%;height:200px;"></div>
+        </div>
+      </div>
+      <div class="col-md-9 col-lg-9 col-sm-8">
+      </div>
     </div>
   </div>
 </div>
@@ -100,3 +70,33 @@
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSn87BAlXf3_IKKAXZzb8h2sRLLwMPQhA&callback=initMap">
 </script>
+
+
+<style type="text/css">
+  .left-side-bar {
+    min-height:600px;
+    background-color: #ddd;
+  }
+  .profile-img {
+    border:2px solid #009688;
+    width:100%;
+  }
+  .emp-profile .fa {
+    color: #009688;
+    padding-right:1%;
+    font-size: 20px;
+  }
+  .emp-profile h4 span {
+    color: #009000;
+    font-size: 15px;
+  }
+  .emp-profile {
+    padding-top:10%;
+  }
+  #map {
+    border:4px solid #009688;
+  }
+  .profile-section,.emp-profile {
+    padding-bottom: 10%;
+  }
+</style>
