@@ -40,7 +40,30 @@
           <div id="map" style="width:100%;height:200px;"></div>
         </div>
       </div>
-      <div class="col-md-9 col-lg-9 col-sm-8">
+      <div class="col-md-9 col-lg-9 col-sm-8 col-xs-12 right-content">
+        <div class="emp-task-section">
+          <% if @employee.tasks.present? %>
+            <h3 class="task-lists"><%= @employee.name%> Task List</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Assigned On</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @employee.employee_tasks.each do |employee_task| %>
+                  <tr>
+                    <td><%= employee_task.try(:task).try(:title)%></td>
+                    <td><%= employee_task.created_at.strftime("%d %B %Y")%></td>
+                    <td><%= employee_task.try(:task).try(:status)%></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -98,5 +121,23 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSn87BAlXf3_IKKAXZzb8h2sR
   }
   .profile-section,.emp-profile {
     padding-bottom: 10%;
+  }
+  .right-content {
+    min-height:686px;
+    background-color: #ccc;
+  }
+  .task-lists {
+    color:#009688;
+  }
+  @media screen and (max-width:767px) {
+    .task-lists {
+      font-size:18px;
+    }
+  }
+  @media screen and (min-width:768px) {
+    .task-lists {
+      font-size:20px;
+      font-weight: 700;
+    }
   }
 </style>
