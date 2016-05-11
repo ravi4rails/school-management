@@ -6,8 +6,15 @@ class Student < ActiveRecord::Base
   validates :email, :uniqueness => true
   validates :age, :numericality => true
 
+  geocoded_by :full_address
+  after_validation :geocode
+
   def full_name
     "#{first_name} #{middle_name} #{last_name}"
+  end
+
+  def full_address
+    "#{city} #{state} #{country}"
   end
 
 end

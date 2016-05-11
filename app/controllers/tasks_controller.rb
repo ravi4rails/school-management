@@ -54,7 +54,7 @@ class TasksController < ApplicationController
     end
   end
 
-  def assign_task    
+  def assign_task
     @task = Task.find(params[:assign_task][:task_id])
     params[:assign_task][:employees].delete("")
     employee_array = params[:assign_task][:employees]
@@ -66,6 +66,11 @@ class TasksController < ApplicationController
   def get_department_employee
     @department = Department.find(params[:department_id])
     @employees = @department.employees
+  end
+
+  def update_task_status
+    @task = Task.find(params[:task_id])
+    @task.update_attributes(:status => "Done")
   end
 
   private

@@ -13,14 +13,14 @@
             <th>Status</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="employee-task-index">
           <% employee.employee_tasks.each do |employee_task| %>
-            <tr>
+            <tr id="employee_task_<%= employee_task.try(:task).try(:id)%>">
               <td><%= employee_task.try(:task).try(:title) %></td>
               <td><%= employee_task.created_at.strftime("%b %d %Y") %></td>
               <td>
                 <% if employee_task.try(:task).try(:status) == "Pending" %>
-                  <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#taskStatus" data-task-id="<%= employee_task.try(:task).try(:id)%>"> Update </button>
+                  <input type="checkbox" class="status-check" data-task-id="<%= employee_task.try(:task).try(:id)%>">
                 <% else %>
                   <i class="fa fa-check"></i>
                 <% end %>
@@ -36,5 +36,15 @@
   </div>
 </div>
 
-<div class="modal fade" id="taskStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-</div>
+<script type="text/javascript">
+  $(".status-check").on('click', function(){
+    if($(this).is(':checked')){
+      var taskId = $(this).data('task-id');
+      $.ajax({
+        url: "/tasks/update_task_status",
+        type: "PUT",
+        data: { task_id : taskId }
+      });
+    }
+  });
+</script>

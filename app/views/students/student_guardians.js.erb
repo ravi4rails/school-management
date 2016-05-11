@@ -1,2 +1,3 @@
 $("#student-guardians").html("<%= escape_javascript(render 'student_guardians_list', student: @student) %>")
-$("#student_guardians").modal('hide')
+// $("#student_guardians").modal('hide')
+window.location = "<%= student_path(@student)%>"
