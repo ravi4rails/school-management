@@ -1,53 +1,23 @@
-<div class="container">
-  <table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Course</th>
-      <th data-breakpoints="xs">Admission Number</th>
-      <th data-breakpoints="xs sm">Enrollment Number</th>
-      <th data-breakpoints="xs">DOB</th>
-      <th data-breakpoints="xs">Admission Date</th>
-      <th data-breakpoints="xs">Category</th>
-      <th data-breakpoints="xs">Relegion</th>
-      <th data-breakpoints="xs">City</th>
-      <th data-breakpoints="xs">State</th>
-      <th data-breakpoints="xs">Country</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @inactive_batches.each do |inactive_batch| %>
-      <% inactive_batch.students.each do |inactive_student| %>
-        <tr>
-          <td><%= inactive_student.full_name %></td>
-          <td><%= inactive_student.batch.try(:course).try(:name) %></td>
-          <td><%= inactive_student.admission_number %></td>
-          <td><%= inactive_student.enrollment_number %></td>
-          <td><%= inactive_student.date_of_birth %></td>
-          <td><%= inactive_student.admission_date %></td>
-          <td><%= inactive_student.category %></td>
-          <td><%= inactive_student.relegion %></td>
-          <td><%= inactive_student.city %></td>
-          <td><%= inactive_student.state %></td>
-          <td><%= inactive_student.country %></td>
-        </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+<div class="find-student-for">
+  <div class="row">
+    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
+      <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#previousClassStudent">View Class Student</button>
+    </div>
+    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
+      <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#previousBatchStudent">View Batch Student</button>
+    </div>
+    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
+      <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#previousCourseStudent">View Course Student</button>
+    </div>
+  </div>
 </div>
-<script>
-  jQuery(function($){
-    $('.table').footable({
-      "paging": {
-        "enabled": true
-      },
-      "filtering": {
-        "enabled": true
-      },
-      "sorting": {
-        "enabled": true
-      }
-    });
-  });
-</script>
+
+<div class="modal fade" id="previousClassStudent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <%= render "students/find_previous_class_students" %>
+</div>
+<div class="modal fade" id="previousBatchStudent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <%= render "students/find_previous_batch_students" %>
+</div>
+<div class="modal fade" id="previousCourseStudent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <%= render "students/find_previous_course_students" %>
+</div>

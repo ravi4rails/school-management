@@ -1,0 +1,5 @@
+var options = '<option value="">Select Batch</option>';
+<% @batches.each do |batch|%>
+options += '<option value="<%= batch.id%>"><%= batch.name%></option>'
+<%end%>
+$("#find_batch_students_batch").html(options);

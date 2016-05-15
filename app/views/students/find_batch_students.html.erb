@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="jumbotron">
+    <h3>List of <strong><%= @batch.try(:name) %></strong> Students</h3>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th data-breakpoints="xs">Batch</th>
+        <th data-breakpoints="xs">Class</th>
+        <th data-breakpoints="xs">Enrollment Number</th>
+        <th data-breakpoints="xs">Enrollment Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+        <tr>
+          <td><%= student.full_name%></td>
+          <td><%= student.batch.try(:name)%></td>
+          <td><%= student.section.try(:name)%></td>
+          <td><%= student.enrollment_number%></td>
+          <td><%= student.enrollment_date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  jQuery(function($){
+    $('.table').footable({
+      "paging": {
+        "enabled": true
+      },
+      "filtering": {
+        "enabled": true
+      },
+      "sorting": {
+        "enabled": true
+      }
+    });
+  });
+</script>

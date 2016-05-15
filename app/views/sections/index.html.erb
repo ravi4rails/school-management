@@ -1,29 +1,29 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Sections</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Course</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @sections.each do |section| %>
-      <tr>
-        <td><%= section.name %></td>
-        <td><%= section.course.try(:name) %></td>
-        <td><%= link_to 'Show', section %></td>
-        <td><%= link_to 'Edit', edit_section_path(section) %></td>
-        <td><%= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="jumbotron">
+    <h1>Listing Sections</h1>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Batch</th>
+          <th colspan="3">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="section_index">
+        <% @sections.each do |section| %>
+          <tr id="section_<%= section.id %>">
+            <td><%= section.name %></td>
+            <td><%= section.batch.try(:name) %></td>
+            <td><%= link_to 'Show', section, class: "btn btn-info" %></td>
+            <td><%= link_to 'Edit', edit_section_path(section), :remote => true, class: "btn btn-warning" %></td>
+            <td><%= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, class: "btn btn-danger" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 <%= link_to 'New Section', new_section_path %>
+</div>

@@ -88,17 +88,21 @@
     </div>
     <div class="col-md-4 col-xs-12">
       <%= f.label :batch %><br>
-      <%= f.select :batch_id, options_for_select(Batch.all.collect {|p| [ p.start_year, p.id ] },(f.object.try(:course_id))),{include_blank: 'None'}, { :class => 'form-control input-lg'} %>
+      <%= f.select :batch_id, options_for_select(Batch.all.collect {|p| [ p.name, p.id ] },(f.object.try(:course_id))),{include_blank: 'None'}, { :class => 'form-control input-lg'} %>
     </div>
     <div class="col-md-4 col-xs-12">
-      <%= f.label :age %><br>
-      <%= f.text_field :age , class: "input-lg form-control  " %>
+      <%= f.label :class %><br>
+      <%= f.select :section_id, options_for_select(Section.all.collect {|p| [ p.name, p.id ] },(f.object.try(:section_id))),{include_blank: 'None'}, { :class => 'form-control input-lg'} %>
     </div>
   </div>
   <div class="row">
     <div class="col-md-4 col-xs-12">
       <%= f.label :address %><br>
       <%= f.text_area :address , class: "input-lg form-control  " %>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <%= f.label :age %><br>
+      <%= f.text_field :age , class: "input-lg form-control  " %>
     </div>
   </div>
   <div class="actions">

@@ -188,3 +188,68 @@
   }
 
 }
+
+.find-student-form, .find-student-for {
+  width:60%;
+  padding-bottom: 10%;
+  min-height: 400px;
+}
+.form-field {
+  margin-bottom: 20px;
+}
+.current-student-block, .previous-student-block {
+  border:2px solid #009688;
+  height:250px;
+}
+.img-caption {
+  background-color: #009688;
+  height:50px;
+  margin-top:-10px;
+}
+.img-caption h4{
+  color:#fff;
+  padding-top:12px;
+}
+.img-caption a{
+  color:#fff;
+}
+@media screen and (min-width:768px) {
+  .find-student-form, .find-student-for {
+    margin-left: 20%;
+  }
+  .img-caption,.current-student-block, .previous-student-block {
+    width:75%;
+    margin-left:10%;
+  }
+  .search-student {
+    width:60%;
+    padding-bottom: 10%;
+    margin-left: 20%;
+  }
+}
+@media screen and (max-width:767px) {
+  .find-student-form, .find-student-for {
+    width:100%;
+    padding-bottom: 20%;
+  }
+  .find-student-for .btn{
+    margin-bottom: 2%;
+  }
+  .search-student {
+    width:100%;
+    padding-bottom: 20%;
+  }
+  .img-caption,.current-student-block, .previous-student-block {
+    width:100%;
+  }
+  .current-student-block, .previous-student-block {
+    border:2px solid #009688;
+    height:250px;
+    padding-bottom: 2%;
+  }
+  .student-block {
+    width:80%;
+    padding:10px;
+    margin-left: 10%
+  }
+}

@@ -1,0 +1,5 @@
+var options = '<option value="">Select Course</option>';
+<% @courses.each do |course|%>
+options += '<option value="<%= course.id%>"><%= course.name%></option>'
+<%end%>
+$("#find_course_students_course").html(options);

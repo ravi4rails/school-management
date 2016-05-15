@@ -1,0 +1,21 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel">Craete New Class For This Batch</h4>
+    </div>
+    <%= form_for :batch_section, :url => batch_section_batches_path, :method => "post", :remote => true do |f| %>
+      <div class="modal-body">
+        <%= f.hidden_field :batch_id, :value => @batch.id%>
+        <div class="field">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control input-lg" %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+        <%= f.submit "Save Section", class: "btn btn-primary btn-lg" %>
+      </div>
+    <% end %>
+  </div>
+</div>

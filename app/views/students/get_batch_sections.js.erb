@@ -1,0 +1,5 @@
+var options = '<option value="">Select Semester</option>';
+<% @sections.each do |section|%>
+options += '<option value="<%= section.id%>"><%= section.name%></option>'
+<%end%>
+$("#find_student_section").html(options);

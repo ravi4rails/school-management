@@ -1,24 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Start year:</strong>
-  <%= @batch.start_year %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @batch.name %>
+  </p>
 
-<p>
-  <strong>End year:</strong>
-  <%= @batch.end_year %>
-</p>
+  <p>
+    <strong>Is active:</strong>
+    <%= @batch.is_active %>
+  </p>
 
-<p>
-  <strong>Is active:</strong>
-  <%= @batch.is_active %>
-</p>
+  <div class="jumbotron">
+    <% if @batch.is_active %>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#batchSection">Add New Section</button>
+    <% end %>
+  </div>
 
-<p>
-  <strong>Course:</strong>
-  <%= @batch.course.try(:name) %>
-</p>
+  <% if @batch.sections.present? %>
+    <div class="jumbotron">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Total Students</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @batch.sections.each do |section| %>
+            <tr>
+              <td><%= section.name %></td>
+              <td>60</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
 
-<%= link_to 'Edit', edit_batch_path(@batch) %> |
-<%= link_to 'Back', batches_path %>
+  <%= link_to 'Edit', edit_batch_path(@batch) %> |
+  <%= link_to 'Back', batches_path %>
+  <div class="modal fade" id="batchSection" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <%= render "batches/batch_section" %>
+  </div>
+</div>

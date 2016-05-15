@@ -53,6 +53,11 @@ class BatchesController < ApplicationController
     end
   end
 
+  def batch_section
+    @batch = Batch.find(params[:batch_section][:batch_id])
+    @section = Section.create(:course_id => @batch.course.try(:id), :batch_id => @batch.id, :name => params[:batch_section][:name])
+  end
+
   private
 
     def set_batch
