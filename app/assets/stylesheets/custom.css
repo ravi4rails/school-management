@@ -253,3 +253,12 @@
     margin-left: 10%
   }
 }
+.panel-group .panel-heading {
+  color:#fff;
+  background-color: #009688 !important;
+}
+
+.panel-group .student-panel {
+  color:#fff;
+  background-color: #2196f3 !important;
+}
