@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :employees
-  devise_for :students
+  devise_for :students, controllers: {registrations: 'students/registrations', sessions: 'students/sessions', confirmations: 'students/confirmations', passwords: 'students/passwords'}
   devise_for :admins
   resources :employee_subjects
   resources :news
@@ -68,4 +68,6 @@ Rails.application.routes.draw do
 
   get '/inactive_students' => "students#inactive_students"
   get '/active_students' => "students#active_students"
+
+  get '/student' => "home#student_dashboard"
 end
