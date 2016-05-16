@@ -1,0 +1,6 @@
+<% if @section.errors.any? %>
+  $(".error_explanation").html("<%= escape_javascript(render('sections/error'))%>")
+<% else %>
+  $("#section-modal").modal('hide')
+  $("#section_index").append("<%= escape_javascript(render('section', section: @section )) %>")
+<% end %>

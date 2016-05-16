@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" style="padding-bottom:25px;">
   <p id="notice"><%= notice %></p>
   <div class="jumbotron">
-    <h1>Listing Sections</h1>
+    <h3>Listing Sections</h3>
   </div>
   <div class="table-responsive">
     <table class="table">
@@ -25,5 +25,11 @@
       </tbody>
     </table>
   </div>
-<%= link_to 'New Section', new_section_path %>
+<%= link_to 'New Section', new_section_path, :remote => true, class: "btn btn-primary" %>
+</div>
+
+
+<div class="modal fade" id="section-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+</div>
+<div class="modal fade" id="edit-section-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 </div>
