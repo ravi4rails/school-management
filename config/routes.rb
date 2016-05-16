@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   resources :employee_subjects
   resources :news
   resources :tasks do
