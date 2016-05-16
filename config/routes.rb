@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :employees
+  devise_for :students
   devise_for :admins
   resources :employee_subjects
   resources :news

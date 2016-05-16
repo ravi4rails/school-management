@@ -1,4 +1,8 @@
 class Student < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
   belongs_to :batch
   belongs_to :course
   belongs_to :section
@@ -9,6 +13,7 @@ class Student < ActiveRecord::Base
   mount_uploader :profile_picture, ImageUploader
   geocoded_by :full_address
   after_validation :geocode
+  after_create :add_count_to_section
 
   def full_name
     "#{first_name} #{middle_name} #{last_name}"
@@ -16,6 +21,10 @@ class Student < ActiveRecord::Base
 
   def full_address
     "#{city} #{state} #{country}"
+  end
+
+  def add_count_to_section
+    self.section.total_students += 1
   end
 
 end
