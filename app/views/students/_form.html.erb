@@ -1,4 +1,4 @@
-<%= form_for(@student) do |f| %>
+<%= form_for @student, :url => create_student_students_path, :method => "post" do |f| %>
   <% if @student.errors.any? %>
     <div class="jumbotron">
       <div id="error_explanation">

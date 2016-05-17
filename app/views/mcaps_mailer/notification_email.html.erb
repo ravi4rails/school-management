@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi, <%= @employee.name %></h1>
+    <p>
+      You are assigned to perform <%= @task.title %>. Below is the description:<br>
+      <%= @task.description %>
+    </p>
+    <p>
+      You are expected to submit the task before or upto <%= @task.due_date.strftime("%d %B %Y")%>. Hope you will.
+    </p>
+    <p>
+      Best of luck.
+    </p>
+  </body>
+</html>

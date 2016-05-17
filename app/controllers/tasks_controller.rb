@@ -60,6 +60,8 @@ class TasksController < ApplicationController
     employee_array = params[:assign_task][:employees]
     employee_array.each do |employee|
       EmployeeTask.create(:employee_id => employee.to_i, :task_id => @task.id )
+      @employee = Employee.find(employee.to_i)
+      McapsMailer.notification_email(@employee, @task).deliver_now
     end
   end
 

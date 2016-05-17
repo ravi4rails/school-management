@@ -16,7 +16,7 @@ class StudentsController < ApplicationController
   def edit
   end
 
-  def create
+  def create_student
     @student = Student.new(student_params)
 
     respond_to do |format|

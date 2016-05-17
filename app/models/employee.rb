@@ -2,7 +2,7 @@ class Employee < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable
   belongs_to :department
   has_many :employee_subjects
   has_many :subjects, :through => :employee_subjects
@@ -14,6 +14,7 @@ class Employee < ActiveRecord::Base
   mount_uploader :profile_picture, ImageUploader
   geocoded_by :full_address
   after_validation :geocode
+  before_create :my_password
 
   def name
     "#{first_name} #{middle_name} #{last_name}"
@@ -21,6 +22,10 @@ class Employee < ActiveRecord::Base
 
   def full_address
     "#{city} #{state} #{country}"
+  end
+
+  def my_password
+    self.encrypted_password = BCrypt::Password.create(SecureRandom.hex(4))
   end
 
 end

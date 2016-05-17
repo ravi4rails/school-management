@@ -4,10 +4,16 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to MCAPS-AMS, <%= @employee.name %></h1>
+    <h1>Welcome to SCSERP, <%= @employee.name %></h1>
     <p>
-      We are glade to inform you that we appointed you as our staff-member. We are working on developing the platform for you to access our academic information. Wel will shortly provide service. We are looking towards for long relationship with you.
-
+      We are glade to inform you that we appointed you as our staff-member. We are working on developing the platform for you to access our academic information. We will shortly provide service. We are looking towards for long relationship with you.
+    </p>
+    <p>
+      Here are your credentials:
+      <strong>username:</strong> <%= @employee.name %><br>
+      <strong>password:</strong> <%= @employee.encrypted_password %><br>
+      <br>
+      You can change Your Password if you want.
       Thanks, for joining us.
       <br>
     </p>

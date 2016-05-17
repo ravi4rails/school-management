@@ -7,3 +7,6 @@ development:
   port: 5432
   database: school_management
   pool: 5
+
+
+# Employee.update_all(encrypted_password: BCrypt::Password.create("11111111"))

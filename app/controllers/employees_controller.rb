@@ -16,12 +16,12 @@ class EmployeesController < ApplicationController
   def edit
   end
 
-  def create
+  def create_employee
     @employee = Employee.new(employee_params)
 
     respond_to do |format|
       if @employee.save
-        # McapsMailer.welcome_email(@employee).deliver_now
+        McapsMailer.welcome_email(@employee).deliver_now
         format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
         format.json { render :show, status: :created, location: @employee }
       else
