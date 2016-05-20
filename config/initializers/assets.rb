@@ -4,6 +4,10 @@
 Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( admin.css )
 Rails.application.config.assets.precompile += %w( admin.js )
+Rails.application.config.assets.precompile += %w( student.css )
+Rails.application.config.assets.precompile += %w( student.js )
+Rails.application.config.assets.precompile += %w( employee.css )
+Rails.application.config.assets.precompile += %w( employee.js )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 

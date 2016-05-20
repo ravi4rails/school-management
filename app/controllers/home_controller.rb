@@ -3,9 +3,11 @@ class HomeController < ApplicationController
   end
 
   def student_dashboard
+    render :layout => "student"
   end
 
   def my_profile
+    render :layout => "student"
   end
 
   def employee_dashboard

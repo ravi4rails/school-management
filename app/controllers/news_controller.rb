@@ -3,7 +3,11 @@ class NewsController < ApplicationController
   before_action :set_news, only: [:show, :edit, :update, :destroy]
 
   def index
-    @news = News.all
+    if admin_signed_in? || employee_signed_in?
+      @news = News.all
+    else
+      @news = News.last(5)
+    end
   end
 
   def show

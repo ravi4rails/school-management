@@ -1,22 +1,36 @@
 <div class="container">
   <div class="student-dashboard">
     <div class="row">
-      <div class="col-md-4 col-xs-12 col-sm-4 dashboard-block">
+      <div class="col-md-3 col-xs-12 col-sm-3 dashboard-block">
         <%= image_tag "profile.jpeg", class: "img-responsive student-dashboard-images" %>
         <div class="caption text-center">
-          <h4><%= link_to "My Profile", my_profile_path(:student_id => current_student.id) %></h4>
+          <h4><%= link_to "My Profile", "/my_profile" %></h4>
         </div>
       </div>
-      <div class="col-md-4 col-xs-12 col-sm-4 dashboard-block">
+      <div class="col-md-3 col-xs-12 col-sm-3 dashboard-block">
         <%= image_tag "news.jpg", class: "img-responsive student-dashboard-images" %>
         <div class="caption text-center">
-          <h4><%= link_to "Academic News", "#"%></h4>
+          <h4><%= link_to "Academic News", news_index_path %></h4>
         </div>
       </div>
-      <div class="col-md-4 col-xs-12 col-sm-4 dashboard-block">
+      <div class="col-md-3 col-xs-12 col-sm-3 dashboard-block">
         <%= image_tag "events.jpeg", class: "img-responsive student-dashboard-images" %>
         <div class="caption text-center">
-          <h4><%= link_to "Academic Events", "#"%></h4>
+          <h4><%= link_to "Academic Events", events_path %></h4>
+        </div>
+      </div>
+      <div class="col-md-3 col-xs-12 col-sm-3 dashboard-block">
+        <%= image_tag "timetable.png", class: "img-responsive student-dashboard-images" %>
+        <div class="caption text-center">
+          <h4><%= link_to "Timetable", "#"%></h4>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-xs-12 col-sm-3 dashboard-block">
+        <%= image_tag "attd.jpg", class: "img-responsive student-dashboard-images" %>
+        <div class="caption text-center">
+          <h4><%= link_to "My Attendance", "#" %></h4>
         </div>
       </div>
     </div>
@@ -26,14 +40,9 @@
 <style type="text/css">
   @media screen and (min-width:768px) {
     .student-dashboard {
-      width:90%;
-      background-color: #bbb;
-      min-height:600px;
-      margin-bottom: 20px;
-      margin-left: 5%;
     }
     .student-dashboard-images {
-      width:85%;
+      width:100%;
       height:270px;
       border:2px solid #009688;
     }
@@ -43,7 +52,7 @@
     .caption{
       margin-top:-20px;
       background-color: #009688;
-      width:85%;
+      width:100%;
       height:50px;
       margin-left: 20px;
     }

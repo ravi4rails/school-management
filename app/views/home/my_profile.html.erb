@@ -1,5 +1,36 @@
-<div class="container">
-  <div class="jumbotron">
-    <h2>Hello! <%= @student.full_name %> </h2>
+<% if student_signed_in? %>
+  <div class="container profile-container">
+    <div class="row">
+      <div class="col-xs-12 col-md-3 ">
+        <div class="employee-img">
+          <%= image_tag current_student.profile_picture, class: "img-responsive profile-img"%>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-9">
+        <div class="employee-info">
+          <h4><strong>Name:</strong><%= current_student.full_name%></h4>
+          <h4><strong>Email:</strong><%= current_student.email%></h4>
+          <h4><strong>DOB:</strong><%= current_student.date_of_birth%></h4>
+          <h4><strong>Joining:</strong><%= current_student.full_address%></h4>
+          <h4><strong>Contact:</strong><%= current_student.contact%></h4>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+<% end %>
+
+<style type="text/css">
+  .employee-img, .employee-info {
+    background-color: #ccc;
+    padding-top: 20px;
+
+  }
+  .profile-img {
+    border:2px solid #009688;
+    margin-left:15%;
+  }
+  .profile-container {
+    background-color: #ccc;
+    min-height:300px;
+  }
+</style>

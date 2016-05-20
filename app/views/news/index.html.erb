@@ -2,7 +2,9 @@
   <p id="notice"><%= notice %></p>
   <div class="jumbotron">
     <h3>Listing News</h3>
-    <%= link_to "Create New News Here",new_news_path, class: "btn btn-primary" %>
+    <% if admin_signed_in?%>
+      <%= link_to "Create New News Here",new_news_path, class: "btn btn-primary" %>
+    <% end %>
   </div>
   <div class="table-responsive">
     <table class="table">
@@ -19,8 +21,10 @@
             <td><%= news.title %></td>
             <td><%= truncate(news.content, length: 50, omission: "...").html_safe%></td>
             <td><%= link_to 'Show', news, class: "btn btn-sm btn-info" %></td>
-            <td><%= link_to 'Edit', edit_news_path(news), class: "btn btn-sm btn-warning" %></td>
-            <td><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %></td>
+            <% if admin_signed_in?%>
+              <td><%= link_to 'Edit', edit_news_path(news), class: "btn btn-sm btn-warning" %></td>
+              <td><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
