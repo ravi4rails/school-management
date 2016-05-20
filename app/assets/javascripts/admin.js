@@ -1,0 +1,10 @@
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+//= require jquery.dataTables.min
+//= require bootstrap
+//= require moment.min
+//= require footable
+//= require fullcalendar
+//= require jquery-ui/datepicker
+//= require ckeditor-jquery

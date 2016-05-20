@@ -6,10 +6,24 @@ class HomeController < ApplicationController
   end
 
   def my_profile
-    @student = Student.find(params[:student_id])
   end
 
   def employee_dashboard
+  end
+
+  def employee_profile
+  end
+
+  def admin_dashboard
+    render :layout => "admin"
+  end
+
+  def admission
+    render :layout => "admin"
+  end
+
+  def settings
+    render :layout => "admin"
   end
 
 end

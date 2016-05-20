@@ -1,48 +1,20 @@
 <div class="container">
-  <p id="notice"><%= notice %></p>
-  <div class="jumbotron">
-    <h1>Listing Events</h1>
-  </div>
-  <div class="search_form">
-    <%= search_form_for @search do |f| %>
-      <div class="input-group">
-        <%= f.text_field :title_cont, :placeholder => "Search Event", class: "form-control" %>
-        <span class="input-group-btn">
-          <%= f.submit "Search", class: "btn btn-primary" %>
-        </span>
-      </div>
-    <% end %>
-  </div>
-  <div class="table-responsive">
-  <table class="table">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Start time</th>
-          <th>End time</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @events.each do |event| %>
-          <tr>
-            <td><%= event.title %></td>
-            <td><%= event.description.html_safe %></td>
-            <td><%= event.start_time %></td>
-            <td><%= event.end_time %></td>
-            <td><%= link_to 'Show', event %></td>
-            <td><%= link_to 'Edit', edit_event_path(event) %></td>
-            <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-
-  <br>
-
-  <%= link_to 'New Event', new_event_path, class: "btn btn-primary" %>
-
-  <%= link_to 'Visit Event Calendar', event_calendar_events_path, class: "btn btn-primary" %>
+  <div id="event-calendar"></div><br>
+  <% if admin_signed_in? %>
+    <%= link_to 'New Event', new_event_path, class: "btn btn-primary" %>
+  <% end %>
 </div>
+
+
+<script type="text/javascript">
+  $("#event-calendar").fullCalendar({
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'month,agendaWeek,agendaDay'
+    },
+    height:500,
+    eventLimit: true,
+    events: "/events/calendar_events"
+  });
+</script>

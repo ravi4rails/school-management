@@ -1,43 +1,58 @@
 <div class="container">
   <div class="jumbotron">
-    <h3>List of <strong><%= @batch.try(:name) %></strong> Students</h3>
+    <h3><%= @batch.name %> Students</h3>
   </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th data-breakpoints="xs">Batch</th>
-        <th data-breakpoints="xs">Class</th>
-        <th data-breakpoints="xs">Enrollment Number</th>
-        <th data-breakpoints="xs">Enrollment Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @students.each do |student| %>
-        <tr>
-          <td><%= student.full_name%></td>
-          <td><%= student.batch.try(:name)%></td>
-          <td><%= student.section.try(:name)%></td>
-          <td><%= student.enrollment_number%></td>
-          <td><%= student.enrollment_date %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <% @students.each do |student| %>
+      <div class="panel panel-default student-panel">
+        <div class="panel-heading" role="tab" id="heading_<%= student.id%>">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<%= student.id%>" aria-expanded="true" aria-controls="collapse_<%= student.id%>">
+              <%= student.full_name %>
+              <i class="glyphicon glyphicon-plus pull-right"></i>
+            </a>
+          </h4>
+        </div>
+        <div id="collapse_<%= student.id%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_<%= student.id%>">
+          <div class="panel-body">
+            <div class="student-details">
+              <div class="row">
+                <div class="col-xs-12 visible-xs">
+                  <h5><strong>Course</strong></h5>
+                  <h5><%= student.course.try(:name) %></h5>
+                  <h5><strong>Batch</strong></h5>
+                  <h5><%= student.batch.try(:name) %></h5>
+                  <h5><strong>Class</strong></h5>
+                  <h5><%= student.section.try(:name) %></h5>
+                  <h5><strong>Enrollment Number</strong></h5>
+                  <h5><%= student.enrollment_number %></h5>
+                  <h5><strong>Email</strong></h5>
+                  <h5><%= student.email %></h5>
+                </div>
+                <div class="col-md-2 col-sm-3 hidden-xs">
+                  <h5><strong>Course</strong></h5>
+                  <h5><strong>Batch</strong></h5>
+                  <h5><strong>Class</strong></h5>
+                  <h5><strong>Enrollment Number</strong></h5>
+                  <h5><strong>Email</strong></h5>
+                </div>
+                <div class="col-md-6 col-sm-7 hidden-xs">
+                  <h5><%= student.course.try(:name) %></h5>
+                  <h5><%= student.batch.try(:name) %></h5>
+                  <h5><%= student.section.try(:name) %></h5>
+                  <h5><%= student.enrollment_number %></h5>
+                  <h5><%= student.email %></h5>
+                </div>
+                <div class="col-md-4 col-sm-2 col-xs-12">
+                  <%= link_to "More Details", student_path(student), class: "btn btn-info btn-block"%>
+                  <%= link_to "Edit Student", edit_student_path(student), class: "btn btn-warning btn-block"%>
+                  <%= link_to "Delete Student", student_path(student), class: "btn btn-danger btn-block", method: :delete, data: { confirm: 'Are you sure?' }%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<script>
-  jQuery(function($){
-    $('.table').footable({
-      "paging": {
-        "enabled": true
-      },
-      "filtering": {
-        "enabled": true
-      },
-      "sorting": {
-        "enabled": true
-      }
-    });
-  });
-</script>

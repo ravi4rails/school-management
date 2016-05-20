@@ -1,0 +1,47 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">SCSErp</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <% if admin_signed_in? %>
+              <li><a href="/admins/sign_out" data-method ="delete">Log Out</a></li>
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Settings</a></li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<style type="text/css">
+  .navbar-default {
+    background-color: #009688;
+  }
+  .navbar-default .navbar-brand {
+    color: #fff;
+    font-weight:900;
+  }
+  .navbar-default .navbar-brand:hover {
+    color: #fff;
+  }
+  .navbar-default .navbar-nav > li > a {
+    color: #fff;
+    font-weight:900;
+  }
+  .navbar-default .navbar-nav > li > a:hover {
+    color: #fff;
+  }
+</style>

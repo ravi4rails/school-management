@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= link_to "Courses", courses_path, class: "btn btn-primary btn-block btn-lg ", "data-toggle" => "tooltip", "data-placement"=>"top", "title" => "Create and Manage Course"%>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= link_to "Departments", departments_path, class: "btn btn-primary btn-block btn-lg", "data-toggle" => "tooltip", "data-placement"=>"top", "title" => "Create and Manage Departments"%>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= link_to "Batches", batches_path, class: "btn btn-primary btn-block btn-lg", "data-toggle" => "tooltip", "data-placement"=>"top", "title" => "Create and Manage Batches"%>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= link_to "Classes", sections_path, class: "btn btn-primary btn-block btn-lg", "data-toggle" => "tooltip", "data-placement"=>"top", "title" => "Create and Manage Classes"%>
+    </div>
+  </div>
+  &nbsp
+  <div class="row">
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= link_to "Tasks", tasks_path, class: "btn btn-primary btn-block btn-lg", "data-toggle" => "tooltip", "data-placement"=>"top", "title" => "Create and Manage Tasks"%>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= link_to "Work Allotment", sections_path, class: "btn btn-primary btn-block btn-lg", "data-toggle" => "tooltip", "data-placement"=>"top", "title" => "Assign Subjects to Employees"%>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= link_to "Subjects", subjects_path, class: "btn btn-primary btn-block btn-lg", "data-toggle" => "tooltip", "data-placement"=>"top", "title" => "Create and Manage Subjects"%>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= link_to "Examinations", sections_path, class: "btn btn-primary btn-block btn-lg", "data-toggle" => "tooltip", "data-placement"=>"top", "title" => "Create and Manage Examinations"%>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>

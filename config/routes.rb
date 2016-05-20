@@ -87,4 +87,9 @@ Rails.application.routes.draw do
 
   get '/student' => "home#student_dashboard"
   get '/employee' => "home#employee_dashboard"
+  get '/employee_profile' => "home#employee_profile"
+  get '/admin' => "home#admin_dashboard"
+  get '/admission' => "home#admission"
+  get '/search_students' => "students#search_students"
+  get '/settings' => "home#settings"
 end

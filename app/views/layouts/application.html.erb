@@ -5,38 +5,12 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <%= render "layouts/header"%>
-  <!-- <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p> -->
   <%= yield %>
- <footer class="footer-distributed">
-
-      <div class="footer-left">
-
-        <h3>MCAPS<span>AMS</span></h3>
-
-        <p class="footer-links">
-        </p>
-
-        <p class="footer-company-name">mcaps &copy; 2015</p>
-        <p class="footer-company-name">Indore, MP, India</p>
-      </div>
-
-      <div class="footer-center">
-        <div>
-        </div>
-        <div>
-        </div>
-      </div>
-      <div class="footer-right">
-        <p class="footer-company-about">
-        </p>
-        <div class="footer-icons">
-        </div>
-      </div>
-
-    </footer>
 </body>
 </html>

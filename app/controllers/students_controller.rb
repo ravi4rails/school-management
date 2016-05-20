@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  layout 'admin'
   before_action :set_student, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -151,6 +152,9 @@ class StudentsController < ApplicationController
   def get_department_courses_course_previous_students
     @department = Department.find(params[:department_id])
     @courses = @department.courses
+  end
+
+  def search_students
   end
 
   private

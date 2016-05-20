@@ -1,25 +1,45 @@
-<div class="container">
-  <div class="jumbotron">
-    <h2>Welcome To MCAPS</h2>
-  </div>
-  <div class="row">
-    <div class="col-md-2 col-xs-12">
-      <%= link_to "Course", courses_path, class: "btn btn-primary btn-block" %>
-    </div>
-    <div class="col-md-2 col-xs-12">
-      <%= link_to "Department", departments_path, class: "btn btn-primary btn-block" %>
-    </div>
-    <div class="col-md-2 col-xs-12">
-      <%= link_to "Student", students_path, class: "btn btn-primary btn-block" %>
-    </div>
-    <div class="col-md-2 col-xs-12">
-      <%= link_to "Employee", employees_path, class: "btn btn-primary btn-block" %>
-    </div>
-    <div class="col-md-2 col-xs-12">
-      <%= link_to "Subject", subjects_path, class: "btn btn-primary btn-block" %>
-    </div>
-    <div class="col-md-2 col-xs-12">
-      <%= link_to "Calendar", events_path, class: "btn btn-primary btn-block" %>
+<div class="page-wrapper">
+  <div class="container">
+    <div class="user-interface">
+      <div class="alert alert-danger" role="alert">
+        <div class="row">
+          <div class="col-md-5 col-xs-4">
+            <%= image_tag "admin.png", class: "home-img" %>
+          </div>
+          <div class="col-md-7 col-xs-8">
+            <h3>Admin</h3>
+            <%= link_to "admins/sign_in", class: "btn btn-primary" do %>
+              <i class="fa fa-sign-in" aria-hidden="true"></i> Sign In Here
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-danger" role="alert">
+        <div class="row">
+          <div class="col-md-5 col-xs-4">
+            <%= image_tag "emp.png", class: "home-img" %>
+          </div>
+          <div class="col-md-7 col-xs-8">
+            <h3>Employee</h3>
+            <%= link_to "employees/sign_in", class: "btn btn-primary" do %>
+              <i class="fa fa-sign-in" aria-hidden="true"></i> Sign In Here
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-danger" role="alert">
+        <div class="row std-sec">
+          <div class="col-md-5 col-xs-4">
+            <%= image_tag "students.png", class: "home-img" %>
+          </div>
+          <div class="col-md-7 col-xs-8">
+            <h3>Student</h3>
+            <%= link_to "students/sign_in", class: "btn btn-primary" do %>
+              <i class="fa fa-sign-in" aria-hidden="true"></i> Sign In Here
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <div class="admin-blocks">
+        <%= image_tag "addme.jpeg", class: "admin-block-img" %>
+        <div class="admin-block-heading text-center">
+          <a href="/admission">
+            <h3>Admissions</h3>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <div class="admin-blocks">
+        <%= image_tag "profile.jpg", class: "admin-block-img" %>
+        <div class="admin-block-heading text-center">
+          <a href="/search_students">
+            <h3>Students</h3>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <div class="admin-blocks">
+        <%= image_tag "empprofile.jpeg", class: "admin-block-img" %>
+        <div class="admin-block-heading text-center">
+          <h3>Employees</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <div class="admin-blocks">
+        <%= image_tag "news.jpg", class: "admin-block-img" %>
+        <div class="admin-block-heading text-center">
+          <h3><%= link_to "News", news_index_path %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  &nbsp
+  <div class="row">
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <div class="admin-blocks">
+        <%= image_tag "events.jpeg", class: "admin-block-img" %>
+        <div class="admin-block-heading text-center">
+          <h3><%= link_to "Events", events_path %></h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <div class="admin-blocks">
+        <%= image_tag "setting.png", class: "admin-block-img" %>
+        <div class="admin-block-heading text-center">
+          <h3><%= link_to "Settings", "/settings" %></h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <div class="admin-blocks">
+        <%= image_tag "timetable.png", class: "admin-block-img" %>
+        <div class="admin-block-heading text-center">
+          <h3>Timetable</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <div class="admin-blocks">
+        <%= image_tag "finance.jpg", class: "admin-block-img" %>
+        <div class="admin-block-heading text-center">
+          <h3>Finance</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .admin-block-img {
+    width:100%;
+    border:2px solid #009688;
+    max-height:230px;
+  }
+  .admin-block-heading {
+    background-color: #009688;
+    min-height:50px;
+    margin-top:-20px;
+  }
+  .admin-block-heading h3{
+    padding-top:10px;
+    color:#fff;
+  }
+</style>

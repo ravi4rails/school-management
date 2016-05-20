@@ -1,0 +1,37 @@
+<% if employee_signed_in? %>
+  <div class="container profile-container">
+    <div class="row">
+      <div class="col-xs-12 col-md-3 ">
+        <div class="employee-img">
+          <%= image_tag current_employee.profile_picture, class: "img-responsive profile-img"%>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-9">
+        <div class="employee-info">
+          <h4><strong>Name:</strong><%= current_employee.name%></h4>
+          <h4><strong>Email:</strong><%= current_employee.email%></h4>
+          <h4><strong>DOB:</strong><%= current_employee.date_of_birth%></h4>
+          <h4><strong>Joining:</strong><%= current_employee.date_of_joining%></h4>
+          <h4><strong>Post:</strong>Proffessor</h4>
+          <h4><strong>Contact:</strong><%= current_employee.contact%></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<style type="text/css">
+  .employee-img, .employee-info {
+    background-color: #ccc;
+    padding-top: 20px;
+
+  }
+  .profile-img {
+    border:2px solid #009688;
+    margin-left:15%;
+  }
+  .profile-container {
+    background-color: #ccc;
+    min-height:300px;
+  }
+</style>

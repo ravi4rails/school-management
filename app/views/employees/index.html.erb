@@ -1,7 +1,8 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
   <div class="jumbotron">
-    <h2>Listing Employees</h2>
+    <h3>Employee Admission</h3>
+    <%= link_to "Create An Admission Here", new_employee_path, class: "btn btn-primary"%>
   </div>
   <div class="search_form">
     <%= search_form_for @search do |f| %>
@@ -17,18 +18,10 @@
     <table class="table">
       <thead>
         <tr>
-          <th>First name</th>
-          <th>Middle name</th>
-          <th>Last name</th>
-          <th>City</th>
-          <th>State</th>
-          <th>Country</th>
+          <th>Name</th>
+          <th>Address</th>
           <th>Email</th>
           <th>Contact</th>
-          <th>Address</th>
-          <th>Date of birth</th>
-          <th>Age</th>
-          <th>Date of joining</th>
           <th>Qualification</th>
           <th>Department</th>
           <th colspan="3"></th>
@@ -38,23 +31,15 @@
       <tbody>
         <% @employees.each do |employee| %>
           <tr>
-            <td><%= employee.first_name %></td>
-            <td><%= employee.middle_name %></td>
-            <td><%= employee.last_name %></td>
-            <td><%= employee.city %></td>
-            <td><%= employee.state %></td>
-            <td><%= employee.country %></td>
+            <td><%= employee.name %></td>
+            <td><%= employee.full_address %></td>
             <td><%= employee.email %></td>
             <td><%= employee.contact %></td>
-            <td><%= employee.address %></td>
-            <td><%= employee.date_of_birth %></td>
-            <td><%= employee.age %></td>
-            <td><%= employee.date_of_joining %></td>
             <td><%= employee.qualification %></td>
             <td><%= employee.department.try(:name) %></td>
-            <td><%= link_to 'Show', employee, class: "btn btn-info" %></td>
-            <td><%= link_to 'Edit', edit_employee_path(employee), class: "btn btn-warning" %></td>
-            <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+            <td><%= link_to 'Show', employee, class: "btn btn-info btn-sm" %></td>
+            <td><%= link_to 'Edit', edit_employee_path(employee), class: "btn btn-warning btn-sm" %></td>
+            <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
           </tr>
         <% end %>
       </tbody>
