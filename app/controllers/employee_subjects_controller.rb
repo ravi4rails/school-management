@@ -1,4 +1,5 @@
 class EmployeeSubjectsController < ApplicationController
+  layout 'admin'
   before_action :set_employee_subject, only: [:show, :edit, :update, :destroy]
 
   def index
