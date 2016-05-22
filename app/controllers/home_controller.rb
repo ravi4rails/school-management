@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
+
+  before_action :set_admin_layout, :only => [:admin_dashboard, :work_allotment, :settings, :admission]
+
   def index
   end
 
@@ -17,15 +20,21 @@ class HomeController < ApplicationController
   end
 
   def admin_dashboard
-    render :layout => "admin"
   end
 
   def admission
-    render :layout => "admin"
   end
 
   def settings
-    render :layout => "admin"
   end
+
+  def work_allotment
+  end
+
+  private
+
+    def set_admin_layout
+      render :layout => "admin"
+    end
 
 end

@@ -99,4 +99,5 @@ Rails.application.routes.draw do
   get '/admission' => "home#admission"
   get '/search_students' => "students#search_students"
   get '/settings' => "home#settings"
+  get '/work_allotment' => "home#work_allotment"
 end
