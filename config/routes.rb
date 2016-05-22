@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :employees, controllers: {registrations: 'employees/registrations', sessions: 'employees/sessions', confirmations: 'employees/confirmations', passwords: 'employees/passwords'}
   devise_for :students, controllers: {registrations: 'students/registrations', sessions: 'students/sessions', confirmations: 'students/confirmations', passwords: 'students/passwords'}
-  devise_for :admins
+  devise_for :admins, controllers: {registrations: 'admins/registrations', sessions: 'admins/sessions'}
+  resources :admins
   resources :employee_subjects
   resources :news
   resources :tasks do
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   resources :employees do
     collection do
       post :create_employee
+      put :update_employee
     end
   end
   resources :events  do
@@ -27,6 +29,7 @@ Rails.application.routes.draw do
     collection do
       post :student_guardians
       post :create_student
+      put :update_student
       get :find_student
       get :find_batch_students
       get :get_department_courses
@@ -78,6 +81,10 @@ Rails.application.routes.draw do
         get :my_profile
       end
     end
+  end
+
+  resources :conversations do
+    resources :messages
   end
 
   get '/my_profile' => "home#my_profile"

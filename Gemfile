@@ -55,3 +55,5 @@ gem 'ransack'
 gem 'geocoder'
 gem "rmagick"
 gem "carrierwave"
+gem 'private_pub'
+gem 'thin'

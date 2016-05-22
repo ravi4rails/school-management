@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
   layout 'admin'
-  before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  before_action :set_employee, only: [:show, :edit, :destroy]
 
   def index
     @search = Employee.search(params[:q])
@@ -19,10 +19,9 @@ class EmployeesController < ApplicationController
 
   def create_employee
     @employee = Employee.new(employee_params)
-
     respond_to do |format|
       if @employee.save
-        McapsMailer.welcome_email(@employee).deliver_now
+        # McapsMailer.welcome_email(@employee).deliver_now
         format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
         format.json { render :show, status: :created, location: @employee }
       else
@@ -32,9 +31,10 @@ class EmployeesController < ApplicationController
     end
   end
 
-  def update
+  def update_employee
+    @employee = Employee.find(params[:employee][:id])
     respond_to do |format|
-      if @employee.update(employee_params)
+      if @employee.update_attributes(update_employee_params)
         format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
         format.json { render :show, status: :ok, location: @employee }
       else
@@ -60,5 +60,9 @@ class EmployeesController < ApplicationController
 
     def employee_params
       params.require(:employee).permit(:first_name, :middle_name, :last_name, :city, :state, :country, :email, :contact, :address, :date_of_birth, :age, :date_of_joining, :qualification, :department_id, :latitude, :longitude, :profile_picture)
+    end
+
+    def update_employee_params
+      params.require(:employee).permit(:id, :first_name, :middle_name, :last_name, :city, :state, :country, :email, :contact, :address, :date_of_birth, :age, :date_of_joining, :qualification, :department_id, :latitude, :longitude, :profile_picture)
     end
 end

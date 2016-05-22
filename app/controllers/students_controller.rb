@@ -31,9 +31,10 @@ class StudentsController < ApplicationController
     end
   end
 
-  def update
+  def update_student
+    @student = Student.find(params[:student][:id])
     respond_to do |format|
-      if @student.update(student_params)
+      if @student.update_attributes(update_student_params)
         format.html { redirect_to @student, notice: 'Student was successfully updated.' }
         format.json { render :show, status: :ok, location: @student }
       else
@@ -165,5 +166,9 @@ class StudentsController < ApplicationController
 
     def student_params
       params.require(:student).permit(:first_name, :middle_name, :last_name, :batch_id, :date_of_birth, :admission_date, :enrollment_date, :admission_number, :enrollment_number, :email, :relegion, :category, :contact, :city, :state, :country, :course_id, :address, :age, :latitude, :longitude, :profile_picture, :section_id)
+    end
+
+    def update_student_params
+      params.require(:student).permit(:id, :first_name, :middle_name, :last_name, :batch_id, :date_of_birth, :admission_date, :enrollment_date, :admission_number, :enrollment_number, :email, :relegion, :category, :contact, :city, :state, :country, :course_id, :address, :age, :latitude, :longitude, :profile_picture, :section_id)
     end
 end

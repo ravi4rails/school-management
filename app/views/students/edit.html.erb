@@ -1,6 +1,123 @@
 <div class="container">
   <h3>Editing Student</h3>
-  <%= render 'form' %>
+  <%= form_for @student, :url => update_student_students_path, :method => "put" do |f| %>
+    <% if @student.errors.any? %>
+      <div class="jumbotron">
+        <div id="error_explanation">
+          <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+          <ul>
+          <% @student.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    <%= f.hidden_field :id, :value => @student.id %>
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :first_name %><br>
+        <%= f.text_field :first_name, class: "input-lg form-control  " %>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :middle_name %><br>
+        <%= f.text_field :middle_name, class: "input-lg form-control  " %>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :last_name %><br>
+        <%= f.text_field :last_name, class: "input-lg form-control  " %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :date_of_birth %><br>
+        <%= f.text_field :date_of_birth, class: "input-lg form-control  datepicker" %>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :admission_date %><br>
+        <%= f.text_field :admission_date, class: "input-lg form-control datepicker" %>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :enrollment_date %><br>
+        <%= f.text_field :enrollment_date, class: "input-lg form-control  datepicker" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :admission_number %><br>
+        <%= f.text_field :admission_number, class: "input-lg form-control  " %>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :enrollment_number %><br>
+        <%= f.text_field :enrollment_number, class: "input-lg form-control  " %>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :email %><br>
+        <%= f.email_field :email, class: "input-lg form-control  " %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :relegion %><br>
+        <%= f.text_field :relegion, class: "input-lg form-control  " %>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :category %><br>
+        <%= f.text_field :category, class: "input-lg form-control  " %>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :contact %><br>
+        <%= f.text_field :contact, class: "input-lg form-control  " %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :city %><br>
+        <%= f.text_field :city, class: "input-lg form-control  " %>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :state %><br>
+        <%= f.text_field :state, class: "input-lg form-control  " %>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :country %><br>
+        <%= f.text_field :country , class: "input-lg form-control  " %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :course %><br>
+        <%= f.select :course_id, options_for_select(Course.all.collect {|p| [ p.name, p.id ] },(f.object.try(:course_id))),{include_blank: 'None'}, { :class => 'form-control input-lg'} %>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :batch %><br>
+        <%= f.select :batch_id, options_for_select(Batch.all.collect {|p| [ p.name, p.id ] },(f.object.try(:course_id))),{include_blank: 'None'}, { :class => 'form-control input-lg'} %>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :class %><br>
+        <%= f.select :section_id, options_for_select(Section.all.collect {|p| [ p.name, p.id ] },(f.object.try(:section_id))),{include_blank: 'None'}, { :class => 'form-control input-lg'} %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :address %><br>
+        <%= f.text_area :address , class: "input-lg form-control  " %>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <%= f.label :age %><br>
+        <%= f.text_field :age , class: "input-lg form-control  " %>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit class: "btn btn-primary"%>
+    </div>
+  <% end %>
+
+<script type="text/javascript">
+  $(".datepicker").datepicker({
+    format: "yyyy-mm-dd"
+  });
+</script>
   <%= link_to 'Show', @student %> |
   <%= link_to 'Back', students_path %>
 </div>
