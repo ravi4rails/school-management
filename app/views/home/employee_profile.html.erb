@@ -17,7 +17,69 @@
         </div>
       </div>
     </div>
+    <% if current_employee.subjects.present? %>
+      <div class="panel-group" id="accordion-subject" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <a role="button" data-toggle="collapse" data-parent="#accordion-subject" href="#collapseSubject" aria-expanded="true" aria-controls="collapseSubject">
+            <div class="panel-heading" role="tab" id="headingSubject">
+              <h4 class="panel-title">
+                <strong>My Subjects</strong>
+              </h4>
+            </div>
+          </a>
+          <div id="collapseSubject" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSubject">
+            <div class="panel-body" style="background-color: #fff;">
+              <ul>
+                <% current_employee.subjects.each do |my_sub| %>
+                  <li><%= my_sub.try(:name)%></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% if current_employee.tasks.present? %>
+      <div class="panel-group" id="accordion-task" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <a role="button" data-toggle="collapse" data-parent="#accordion-task" href="#collapseTask" aria-expanded="true" aria-controls="collapseTask">
+              <div class="panel-heading" role="tab" id="headingTask">
+                <h4 class="panel-title">
+                  <strong>My Tasks</strong>
+                </h4>
+              </div>
+            </a>
+            <div id="collapseTask" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTask">
+              <div class="panel-body" style="background-color: #fff;">
+                <table class="table">
+                  <thead>
+                    <th>Task</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                  </thead>
+                  <tbody>
+                    <% current_employee.tasks.each do |my_task| %>
+                      <tr>
+                        <td><%= my_task.try(:title)%></td>
+                        <td><%= my_task.try(:due_date)%></td>
+                        <td>
+                          <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-default">TODO</button>
+                            <button type="button" class="btn btn-default">In Progress</button>
+                            <button type="button" class="btn btn-default">Done</button>
+                          </div>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+      </div>
+    <% end %>
   </div>
+
 <% end %>
 
 <style type="text/css">
@@ -28,7 +90,7 @@
   }
   .profile-img {
     border:2px solid #009688;
-    margin-left:15%;
+    margin-left:0%;
   }
   .profile-container {
     background-color: #ccc;
